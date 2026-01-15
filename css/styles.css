@@ -1,0 +1,399 @@
+:root{
+	--bg: #f5f7fb;
+	--card: #ffffff;
+	--accent: #2563eb;
+	--muted: #6b7280;
+	--shadow: 0 6px 18px rgba(12,20,40,0.06);
+	--sidebar-bg: #0f172a;
+	--on-sidebar: #ffffff;
+}
+
+/* Reset / base */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+	margin:0;
+	font-family:Arial, sans-serif;
+	background:var(--bg);
+	color:#0f172a;
+	display:flex;
+}
+
+/* iframe (sidebar) sizing when included in parent pages */
+.sidebar-frame{
+	width:220px;
+	height:100vh;
+	border:0;
+}
+
+/* Content area (main pages) */
+.content{
+	padding:24px;
+	flex:1;
+}
+
+/* Sidebar content inside the iframe (menu.html) */
+.sidebar{
+	width:100%;
+	height:100vh;
+	padding:16px;
+	box-sizing:border-box;
+	background:var(--sidebar-bg);
+	color:var(--on-sidebar);
+}
+
+/* Brand + nav */
+.brand{
+	font-weight:bold;
+	font-size:18px;
+	margin-bottom:20px;
+}
+
+.sidebar nav a,
+.sidebar a{
+	display:block;
+	color:var(--on-sidebar);
+	text-decoration:none;
+	padding:10px;
+	border-radius:6px;
+	margin-bottom:6px;
+}
+
+.sidebar nav a:hover,
+.sidebar a:hover{
+	background:rgba(255,255,255,0.08);
+}
+
+/* Horizontal menu (per-page) */
+.hmenu{
+	display:flex;
+	gap:10px;
+	margin-bottom:20px;
+}
+
+.hmenu .hbtn{
+	padding:8px 12px;
+	border:0;
+	border-radius:6px;
+	cursor:pointer;
+	background:transparent;
+	font-weight:600;
+	color:var(--muted);
+}
+
+.hmenu .hbtn.active,
+.hmenu .hbtn[aria-selected="true"]{
+	background:linear-gradient(90deg,var(--accent),#3ea0ff);
+	color:#fff;
+	box-shadow:0 6px 20px rgba(31,111,235,0.12);
+}
+
+/* Panels */
+.panel{
+	display:none;
+}
+
+.panel.active{
+	display:block;
+}
+
+/* Small helpers */
+.small{
+	font-size:13px;
+	color:var(--muted);
+}
+
+.page-card{
+	background:var(--card);
+	padding:16px;
+	border-radius:12px;
+	box-shadow:var(--shadow);
+}
+
+/* Responsive: keep sidebar-frame behaviour but let content flow */
+@media (max-width:900px){
+	.sidebar-frame{display:none} /* for a quick mobile fallback */
+}
+
+/* =========================
+   CALENDÁRIO / AGENDA
+========================= */
+
+.calendar-grid{
+	display:grid;
+	grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+	gap:16px;
+}
+
+.event-card{
+	background:var(--card);
+	border-radius:14px;
+	overflow:hidden;
+	box-shadow:var(--shadow);
+	display:flex;
+	flex-direction:column;
+	position:relative;
+}
+
+.event-card img{
+	width:100%;
+	height:120px;
+	object-fit:cover;
+}
+
+.event-date{
+	position:absolute;
+	top:10px;
+	left:10px;
+	background:rgba(15,23,42,0.9);
+	color:white;
+	border-radius:10px;
+	padding:6px 8px;
+	text-align:center;
+	line-height:1;
+}
+
+.event-date .day{
+	font-size:18px;
+	font-weight:bold;
+	display:block;
+}
+
+.event-date .month{
+	font-size:11px;
+	letter-spacing:1px;
+}
+
+.event-info{
+	padding:12px;
+}
+
+.event-info h3{
+	margin:0 0 6px 0;
+	font-size:15px;
+}
+
+.event-info .location{
+	font-size:13px;
+	color:var(--muted);
+}
+
+.event-date.range{
+	display:flex;
+	align-items:center;
+	gap:4px;
+	padding:6px 10px;
+}
+
+.event-date .sep{
+	font-size:14px;
+	opacity:0.7;
+}
+
+.event-date.range .day{
+	font-size:16px;
+}
+
+.event-date.range .month{
+	font-size:10px;
+	margin-left:2px;
+}
+
+/* Estado de inscrição */
+.event-status{
+	position:absolute;
+	top:10px;
+	right:10px;
+	font-size:11px;
+	font-weight:600;
+	padding:4px 10px;
+	border-radius:999px;
+	color:white;
+	pointer-events:none;
+}
+
+.event-status.enrolled{
+	background:#2563eb;
+}
+
+.event-status.not-enrolled{
+	background:#dc2626;
+}
+
+.event-link{
+	text-decoration:none;
+	color:inherit;
+}
+
+.event-link .event-card{
+	transition:transform 0.15s ease, box-shadow 0.15s ease;
+	cursor:pointer;
+}
+
+.event-link:hover .event-card{
+	transform:translateY(-2px);
+	box-shadow:0 10px 26px rgba(12,20,40,0.12);
+}
+
+/* =========================
+   EVENTO — PÁGINA DETALHE
+========================= */
+
+.event-header{
+	display:flex;
+	gap:20px;
+	margin-bottom:20px;
+}
+
+.event-cover{
+	width:260px;
+	height:160px;
+	object-fit:cover;
+	border-radius:16px;
+	box-shadow:var(--shadow);
+}
+
+.event-header-info{
+	flex:1;
+}
+
+.event-badges{
+	display:flex;
+	gap:8px;
+	margin-bottom:8px;
+}
+
+.badge{
+	font-size:11px;
+	font-weight:600;
+	padding:4px 10px;
+	border-radius:999px;
+}
+
+.badge.blue{background:#2563eb;color:white}
+.badge.gray{background:#e5e7eb;color:#111827}
+
+.event-dates,
+.event-location{
+	color:var(--muted);
+	margin:4px 0;
+}
+
+/* Ações */
+.event-actions{
+	display:flex;
+	gap:10px;
+	margin-bottom:24px;
+}
+
+.btn{
+	padding:10px 16px;
+	border-radius:10px;
+	font-weight:600;
+	border:0;
+	cursor:pointer;
+}
+
+.btn.primary{
+	background:#dc2626;
+	color:white;
+}
+
+.btn.secondary{
+	background:#e5e7eb;
+}
+
+/* Layout */
+.event-layout{
+	display:grid;
+	grid-template-columns:2fr 1fr;
+	gap:20px;
+}
+
+.event-main,
+.event-side{
+	display:flex;
+	flex-direction:column;
+	gap:16px;
+}
+
+/* Info blocks */
+.info-row{
+	display:flex;
+	justify-content:space-between;
+	font-size:14px;
+	margin-top:8px;
+}
+
+.status.enrolled{
+	color:#2563eb;
+	font-weight:600;
+}
+
+/* Lists */
+.clean-list{
+	list-style:none;
+	padding:0;
+	margin:0;
+}
+
+.clean-list li{
+	margin-bottom:6px;
+}
+
+.clean-list a{
+	color:#2563eb;
+	text-decoration:none;
+}
+
+/* Responsive */
+@media (max-width:900px){
+	.event-header{
+		flex-direction:column;
+	}
+	.event-layout{
+		grid-template-columns:1fr;
+	}
+}
+
+/* =========================
+   EVENT BADGES (cards)
+========================= */
+
+.event-badges{
+	position:absolute;
+	top:10px;
+	right:10px;
+	display:flex;
+	flex-direction:column;
+	gap:6px;
+	align-items:flex-end;
+	pointer-events:none;
+}
+
+.badge{
+	font-size:11px;
+	font-weight:600;
+	padding:4px 10px;
+	border-radius:999px;
+	white-space:nowrap;
+}
+
+/* Estados */
+.badge.blue{
+	background:#2563eb;
+	color:white;
+}
+
+.badge.red{
+	background:#dc2626;
+	color:white;
+}
+
+/* Âmbito (branco) */
+.badge.outline{
+	background:white;
+	color:#111827;
+	border:1px solid #e5e7eb;
+	box-shadow:0 2px 6px rgba(12,20,40,0.08);
+}

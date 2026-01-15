@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>eAEP — Calendário</title>
+		<link rel="stylesheet" href="../css/styles.css">
+	</head>
+	<body>
+		<iframe
+			src="../other/menu.html"
+			class="sidebar-frame"
+		></iframe>
+
+		<div class="content">
+			<h1>Calendário</h1>
+
+			<div class="hmenu" role="tablist">
+				<button class="hbtn active" data-panel="proximos">Próximos</button>
+				<button class="hbtn" data-panel="passados">Passados</button>
+			</div>
+
+			<!-- PRÓXIMOS -->
+			<div id="proximos" class="panel active">
+				<div class="calendar-grid">
+					<a href="evento1.html" class="event-link">
+						<div class="event-card">
+							<div class="event-date">
+								<span class="day">22</span>
+								<span class="month">FEV</span>
+							</div>
+							<div class="event-badges">
+								<span class="badge blue">Inscrito</span>
+								<span class="badge outline">Nacional</span>
+							</div>
+							<img src="../other/mock-event.png" alt="Evento">
+							<div class="event-info">
+								<h3>Dia do Fundador - Jogo de Cidade</h3>
+								<p class="location">Grande Lisboa</p>
+							</div>
+						</div>
+					</a>
+					
+					<a href="evento2.html" class="event-link">
+						<div class="event-card">
+							<div class="event-date range">
+								<span class="day">28</span>
+								<span class="month">FEV</span>
+								<span class="sep">–</span>
+								<span class="day">01</span>
+								<span class="month">MAR</span>
+							</div>
+							<div class="event-badges">
+								<span class="badge red">Não Inscrito</span>
+								<span class="badge outline">Nacional</span>
+							</div>
+							<img src="../other/mock-event.png" alt="Evento">
+							<div class="event-info">
+								<h3>Conferência Nacional Extraordinária</h3>
+								<p class="location">Grande Lisboa</p>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+
+			<!-- PASSADOS -->
+			<div id="passados" class="panel">
+				<div class="calendar-grid">
+					<a href="evento3.html" class="event-link">
+						<div class="event-card">
+							<div class="event-date range">
+								<span class="day">14</span>
+								<span class="month">FEV</span>
+								<span class="sep">–</span>
+								<span class="day">16</span>
+								<span class="month">FEV</span>
+							</div>
+							<div class="event-badges">
+								<span class="badge blue">Inscrito</span>
+								<span class="badge outline">Nacional</span>
+							</div>
+							<img src="../other/mock-event.png" alt="Evento">
+							<div class="event-info">
+								<h3>Fórum Clã</h3>
+								<p class="location">Grande Lisboa</p>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<script src="../js/main.js"></script>
+	</body>
+</html>
