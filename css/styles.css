@@ -649,3 +649,48 @@ select:focus{
 .page-card.small{padding:10px}
 .summary-table{width:100%;border-collapse:collapse;table-layout:fixed}
 .summary-table th, .summary-table td{border:1px solid #e6e9ef;padding:8px;text-align:left}
+
+/* ATIVIDADES — picklist sections */
+#activity-sections{display:flex;flex-direction:column;gap:12px}
+.activity-section{display:none}
+.activity-section.active{display:block}
+
+/* small helpers */
+.page-card.small{padding:10px}
+.clean-list{list-style:none;padding:0;margin:0}
+.clean-list li{margin-bottom:6px}
+
+/* Divisions section */
+#divisions-section .controls select{
+	appearance:none;
+	-webkit-appearance:none;
+	-moz-appearance:none;
+	background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24'%3E%3Cpath fill='%236b7280' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E") no-repeat right 10px center;
+	border:1px solid #d1d5db;
+	border-radius:6px;
+	padding:8px 34px 8px 10px;
+	font-size:14px;
+}
+
+/* table styling reuses progress-table rules; just ensure column widths */
+#divisionTable thead th{background:#f1f5f9;padding:10px;text-align:left;border:1px solid #e6e9ef}
+#divisionTable th,#divisionTable td{padding:8px 10px;border:1px solid #e6e9ef;vertical-align:middle;word-break:break-word}
+
+/* row colors (apply to td cells of the row) */
+.row-alcateia td{background:#fff7cc}
+.row-tribo-escoteiros td{background:#f0fdf4}
+.row-tribo-exploradores td{background:#eef2ff}
+.row-cla td{background:#fff1f2}
+.row-chefia td{background:#ffffff}
+
+/* hover */
+#divisionTable tbody tr:hover td{filter:brightness(0.98)}
+
+/* clickable */
+.row-link{cursor:pointer}
+
+/* compact adjustments on small screens */
+@media (max-width:900px){
+	#divisionTable thead th, #divisionTable td{padding:8px}
+}
+

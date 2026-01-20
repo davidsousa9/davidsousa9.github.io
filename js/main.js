@@ -277,3 +277,247 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	} catch (e){}
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+	const select = document.getElementById('activitiesSelect');
+	if (!select) return;
+
+	const sections = Array.from(document.querySelectorAll('.activity-section'));
+
+	function showKey(key){
+		sections.forEach(s => s.classList.toggle('active', s.dataset.key === key));
+	}
+
+	// default: first option (or saved)
+	const saved = (function(){
+		try{ return localStorage.getItem('eaep.lastActivity'); }catch(e){ return null; }
+	})();
+	if(saved && [...select.options].some(o=>o.value===saved)){
+		select.value = saved;
+	}
+	showKey(select.value);
+
+	select.addEventListener('change', (e) => {
+		showKey(e.target.value);
+		try{ localStorage.setItem('eaep.lastActivity', e.target.value); }catch(e){}
+	});
+});
+
+// Divisions / subgroups table generator (multi-page safe)
+document.addEventListener('DOMContentLoaded', () => {
+	const container = document.getElementById('divisions-section');
+	if (!container) return;
+
+	const divisionSelect = document.getElementById('divisionSelect');
+	const subgroupWrapper = document.getElementById('subgroupWrapper');
+	const subgroupSelect = document.getElementById('subgroupSelect');
+	const divisionSearch = document.getElementById('divisionSearch');
+	const resetBtn = document.getElementById('resetDivisions');
+	const table = document.getElementById('divisionTable');
+	const tbody = table && table.querySelector('tbody');
+
+	if (!table || !tbody) return;
+
+	// definitions and desired counts
+	const config = [
+		{
+			division: 'Alcateia',
+			className: 'row-alcateia',
+			subgroups: [
+				{ name: 'Castanho', count: 6 },
+				{ name: 'Branco', count: 6 }
+			]
+		},
+		{
+			division: 'Tribo de Escoteiros',
+			className: 'row-tribo-escoteiros',
+			subgroups: [
+				{ name: 'Lobo', count: 6 },
+				{ name: 'Lince', count: 6 }
+			]
+		},
+		{
+			division: 'Tribo de Exploradores',
+			className: 'row-tribo-exploradores',
+			subgroups: [
+				{ name: 'Guarda-Rios', count: 6 },
+				{ name: 'Raposa', count: 6 }
+			]
+		},
+		{
+			division: 'Clã',
+			className: 'row-cla',
+			subgroups: [
+				{ name: 'Clã', count: 5 } // treated as single subgroup
+			]
+		},
+		{
+			division: 'Chefia',
+			className: 'row-chefia',
+			subgroups: [
+				{ name: 'Alcateia', count: 2 },
+				{ name: 'Tribo de Escoteiros', count: 2 },
+				{ name: 'Tribo de Exploradores', count: 2 },
+				{ name: 'Clã', count: 1 },
+				{ name: 'Grupo', count: 3 }
+			]
+		}
+	];
+
+	// name pools
+	const firstNames = ['João','Miguel','Sofia','Ana','Pedro','Tiago','Carolina','Rui','Marta','Nuno','Beatriz','Ricardo','Inês','Luís','Mariana','Hugo','Paulo','Rafael','Helena','Gabriel','Sérgio','Catarina','Bruno','Duarte','Filipa'];
+	const lastNames = ['Pereira','Silva','Costa','Fernandes','Martins','Santos','Oliveira','Rodrigues','Gomes','Carvalho','Almeida','Mendes','Dias','Pinto','Ferreira','Monteiro','Teixeira','Nóbrega'];
+
+	// generate all rows in the exact order requested
+	const allRows = [];
+	let seq = 10001;
+	config.forEach(group => {
+		group.subgroups.forEach(sg => {
+			for (let i=0;i<sg.count;i++){
+				const fn = firstNames[(seq + i) % firstNames.length];
+				const ln = lastNames[(seq*2 + i*3) % lastNames.length];
+				allRows.push({
+					division: group.division,
+					subgroup: sg.name,
+					name: `${fn} ${ln}`,
+					num: `${(seq+i).toString().padStart(5,'0')}`,
+					className: group.className
+				});
+			}
+			seq += sg.count;
+		});
+	});
+
+	// utilities
+	const $ = (sel, ctx=document) => ctx.querySelector(sel);
+	const $$ = (sel, ctx=document) => Array.from((ctx||document).querySelectorAll(sel));
+
+	// populate subgroup select for a division
+	function populateSubgroups(divisionValue){
+		const cfg = config.find(c=>c.division === divisionValue);
+		if(!cfg) return;
+
+		// CLÃ → sem sub-grupo
+		if(cfg.division === 'Clã'){
+			subgroupWrapper.style.display = 'none';
+			subgroupSelect.innerHTML = '';
+			return;
+		}
+
+		// CHEFIA → picklist genérico
+		if(cfg.division === 'Chefia'){
+			subgroupWrapper.style.display = '';
+			const options = ['Todos','Alcateia','Tribo de Escoteiros','Tribo de Exploradores','Clã','Chefia'];
+			subgroupSelect.innerHTML = options.map(o=>`<option value="${o}">${o}</option>`).join('');
+			subgroupSelect.value = 'Todos';
+			return;
+		}
+
+		// Alcateia e Tribos → normal subgroups
+		if(cfg.subgroups.length === 1 && cfg.subgroups[0].name === cfg.division){
+			subgroupWrapper.style.display = 'none';
+			subgroupSelect.innerHTML = '';
+			return;
+		}
+
+		subgroupWrapper.style.display = '';
+		subgroupSelect.innerHTML = '<option value="Todos">Todos</option>' +
+			cfg.subgroups.map(sg => `<option value="${sg.name}">${sg.name}</option>`).join('');
+		subgroupSelect.value = 'Todos';
+	}
+
+	// render rows (optionally filtered)
+	function renderRows(rows, divisionValue){
+		tbody.innerHTML = '';
+		const frag = document.createDocumentFragment();
+
+		// montar cabeçalho
+		const thead = table.querySelector('thead');
+		thead.innerHTML = ''; // limpar
+		const trHead = document.createElement('tr');
+		trHead.innerHTML = `<th scope="col">Divisão</th>` +
+			((divisionValue !== 'Clã') ? `<th scope="col">Sub-grupo</th>` : '') +
+			`<th scope="col">Nome</th><th scope="col">Número Associativo</th>`;
+		thead.appendChild(trHead);
+
+		// montar corpo
+		rows.forEach(r=>{
+			const tr = document.createElement('tr');
+			tr.className = `${r.className} row-link`;
+			tr.dataset.href = 'pages/utilizador.html';
+
+			const subgroupCell = (divisionValue === 'Clã') ? '' : `<td>${r.subgroup}</td>`;
+
+			tr.innerHTML = `
+				<td>${r.division}</td>
+				${subgroupCell}
+				<td>${r.name}</td>
+				<td>${r.num}</td>
+			`;
+
+			frag.appendChild(tr);
+		});
+
+		tbody.appendChild(frag);
+	}
+
+	// initial view: show first division, populate subgroup and render its first subgroup
+	const initialDivision = divisionSelect.value || config[0].division;
+	populateSubgroups(initialDivision);
+
+	// by default, select first subgroup (if present) and show members of that subgroup
+	const defaultSub = subgroupSelect.options.length ? subgroupSelect.options[0].value : null;
+	applyFilters();
+
+	// event handlers
+	divisionSelect.addEventListener('change', (e) => {
+		populateSubgroups(e.target.value);
+		// pick first subgroup if exists
+		if(subgroupSelect.options.length) subgroupSelect.selectedIndex = 0;
+		divisionSearch.value = '';
+		applyFilters();
+	});
+
+	subgroupSelect.addEventListener('change', () => {
+		divisionSearch.value = '';
+		applyFilters();
+	});
+
+	divisionSearch.addEventListener('input', () => {
+		applyFilters();
+	});
+
+	resetBtn.addEventListener('click', () => {
+		divisionSelect.value = config[0].division;
+		populateSubgroups(divisionSelect.value);
+		if(subgroupSelect.options.length) subgroupSelect.selectedIndex = 0;
+		divisionSearch.value = '';
+		applyFilters();
+	});
+
+	// filter by division -> subgroup -> search
+	function applyFilters(){
+		const div = divisionSelect.value;
+		let rows = allRows.filter(r => r.division === div);
+
+		// se o subgrupo estiver visível e não for "Todos", filtra
+		if(subgroupWrapper.style.display !== 'none' && subgroupSelect.value && subgroupSelect.value !== 'Todos'){
+			rows = rows.filter(r => r.subgroup === subgroupSelect.value);
+		}
+
+		const q = divisionSearch.value.trim().toLowerCase();
+		if(q){
+			rows = rows.filter(r => (r.name.toLowerCase().includes(q) || r.num.toLowerCase().includes(q)));
+		}
+
+		renderRows(rows, div);
+	}
+
+	// clicking a row -> navigate to utilador page (top level)
+	tbody.addEventListener('click', (e) => {
+		const tr = e.target.closest('tr');
+		if(!tr) return;
+		const href = tr.dataset.href || 'pages/utilizador.html';
+		window.top.location.href = href;
+	});
+});

@@ -64,7 +64,7 @@
 					<!-- Relatório de Contas (default) -->
 					<section class="finance-section active" data-key="relatorio">
 						<div class="page-card">
-							<h3>Relatório de Contas — Grupo ABC (ano 2025)</h3>
+							<h3>Relatório de Contas — Ano 2025</h3>
 							<p class="small">Resumo e pontos mais relevantes do exercício.</p>
 
 							<div class="grid-3" style="margin-top:12px">
@@ -219,18 +219,134 @@
 
 			<div id="f" class="panel">
 				<h2>Inventário</h2>
+				<section class="page-card">
+					<table class="summary-table">
+						<thead>
+							<tr>
+								<th>Item</th>
+								<th>Quantidade</th>
+								<th>Localização</th>
+								<th>Estado</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Tendas 4 lugares</td>
+								<td>10</td>
+								<td>Armazém principal</td>
+								<td>Bom</td>
+							</tr>
+							<tr>
+								<td>Lenços</td>
+								<td>25</td>
+								<td>Armazém principal</td>
+								<td>Bom</td>
+							</tr>
+							<tr>
+								<td>Fogareiros</td>
+								<td>5</td>
+								<td>Depósito cozinha</td>
+								<td>Bom</td>
+							</tr>
+							<tr>
+								<td>Lanternas</td>
+								<td>12</td>
+								<td>Armazém principal</td>
+								<td>Regular</td>
+							</tr>
+							<tr>
+								<td>Kit Primeiros Socorros</td>
+								<td>3</td>
+								<td>Depósito principal</td>
+								<td>Bom</td>
+							</tr>
+							<tr>
+								<td>Cordas</td>
+								<td>6</td>
+								<td>Armazém equipamentos</td>
+								<td>Bom</td>
+							</tr>
+							<tr>
+								<td>Bandeiras</td>
+								<td>8</td>
+								<td>Depósito principal</td>
+								<td>Bom</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<p class="small" style="margin-top:8px">
+						Nota: Inventário atualizado em 20/01/2026.
+					</p>
+				</section>
 			</div>
 
 			<div id="g" class="panel">
 				<h2>Atividades</h2>
 
-				<p>Objetivos</p>
-				<p>Desafios PPJ</p>
-				<p>Programa</p>
-				<p>Logística</p>
-				<p>Contabilidade</p>
-				<p>Avaliação de Risco</p>
-				<p>Plano de Segurança</p>
+				<div class="page-card">
+					<label for="activitiesSelect" class="small">Selecionar secção:</label>
+					<select id="activitiesSelect" aria-label="Selecionar secção de atividades">
+						<option value="objetivos">Objetivos</option>
+						<option value="desafios">Desafios PPJ</option>
+						<option value="programa">Programa</option>
+						<option value="logistica">Logística</option>
+						<option value="contabilidade">Contabilidade</option>
+						<option value="avaliacao">Avaliação de Risco</option>
+						<option value="seguranca">Plano de Segurança</option>
+					</select>
+				</div>
+
+				<div id="activity-sections">
+					<section class="activity-section active" data-key="objetivos">
+						<div class="page-card">
+							<h3>Objetivos</h3>
+							
+						</div>
+					</section>
+
+					<section class="activity-section" data-key="desafios">
+						<div class="page-card">
+							<h3>Desafios PPJ</h3>
+							
+						</div>
+					</section>
+
+					<section class="activity-section" data-key="programa">
+						<div class="page-card">
+							<h3>Programa</h3>
+							
+						</div>
+					</section>
+
+					<section class="activity-section" data-key="logistica">
+						<div class="page-card">
+							<h3>Logística</h3>
+							
+						</div>
+					</section>
+
+					<section class="activity-section" data-key="contabilidade">
+						<div class="page-card">
+							<h3>Contabilidade</h3>
+							
+						</div>
+					</section>
+
+					<section class="activity-section" data-key="avaliacao">
+						<div class="page-card">
+							<h3>Avaliação de Risco</h3>
+							
+						</div>
+					</section>
+
+					<section class="activity-section" data-key="seguranca">
+						<div class="page-card">
+							<h3>Plano de Segurança</h3>
+							
+						</div>
+					</section>
+				</div>
 			</div>
 		</div>
 
