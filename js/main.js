@@ -521,3 +521,191 @@ document.addEventListener('DOMContentLoaded', () => {
 		window.top.location.href = href;
 	});
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+	const select = document.getElementById('statisticsSelect');
+	if (!select) return;
+	const sections = Array.from(document.querySelectorAll('.stats-section'));
+
+	function showKey(key){
+		sections.forEach(s => s.classList.toggle('active', s.dataset.key === key));
+	}
+
+	// default or saved
+	try{
+		const last = localStorage.getItem('eaep.lastStatistics');
+		if(last && [...select.options].some(o=>o.value===last)) select.value = last;
+	} catch(e){}
+
+	showKey(select.value);
+
+	select.addEventListener('change', (e) => {
+		showKey(e.target.value);
+		try{ localStorage.setItem('eaep.lastStatistics', e.target.value); }catch(e){}
+	});
+});
+
+// Groups list: generate rows, search, sort, reset, row click
+document.addEventListener('DOMContentLoaded', () => {
+	const section = document.getElementById('groups-section');
+	if (!section) return;
+
+	const table = document.getElementById('groupsTable');
+	const tbody = table && table.querySelector('tbody');
+	const search = document.getElementById('groupsSearch');
+	const reset = document.getElementById('resetGroups');
+	if(!table || !tbody) return;
+
+	// sample data (fictício)
+	const groups = [
+		{ id:'ABC', name:'Grupo ABC', elements:69, alcateia:20, tribo_esc:18, tribo_exp:15, cla:8, chefia:8, quotas:'85%' },
+		{ id:'DEF', name:'Grupo DEF', elements:52, alcateia:15, tribo_esc:12, tribo_exp:10, cla:7, chefia:8, quotas:'90%' },
+		{ id:'GHI', name:'Grupo GHI', elements:40, alcateia:10, tribo_esc:10, tribo_exp:8, cla:6, chefia:6, quotas:'78%' },
+		{ id:'JKL', name:'Grupo JKL', elements:83, alcateia:25, tribo_esc:20, tribo_exp:18, cla:10, chefia:10, quotas:'92%' },
+		{ id:'MNO', name:'Grupo MNO', elements:33, alcateia:9, tribo_esc:8, tribo_exp:5, cla:3, chefia:8, quotas:'60%' }
+	];
+
+	// render helper
+	function renderRows(rows){
+		tbody.innerHTML = '';
+		const frag = document.createDocumentFragment();
+		rows.forEach(g=>{
+			const tr = document.createElement('tr');
+			tr.className = 'row-link';
+			tr.dataset.href = `../pages/grupo.html?id=${encodeURIComponent(g.id)}`;
+			tr.innerHTML = `
+				<td>${g.name}</td>
+				<td>${g.elements}</td>
+				<td>${g.alcateia}</td>
+				<td>${g.tribo_esc}</td>
+				<td>${g.tribo_exp}</td>
+				<td>${g.cla}</td>
+				<td>${g.chefia}</td>
+				<td>${g.quotas}</td>
+			`;
+			frag.appendChild(tr);
+		});
+		tbody.appendChild(frag);
+	}
+
+	// initial render
+	renderRows(groups);
+
+	// search
+	search.addEventListener('input', () => {
+		const q = (search.value || '').trim().toLowerCase();
+		const filtered = q ? groups.filter(g => g.name.toLowerCase().includes(q) || g.id.toLowerCase().includes(q)) : groups.slice();
+		renderRows(filtered);
+	});
+
+	// reset
+	reset.addEventListener('click', () => {
+		search.value = '';
+		renderRows(groups);
+	});
+
+	// row click -> navigate
+	tbody.addEventListener('click', (e) => {
+		const tr = e.target.closest('tr');
+		if(!tr) return;
+		const href = tr.dataset.href || '../pages/grupo.html';
+		window.top.location.href = href;
+	});
+
+	// sorting (toggle asc/desc)
+	let sortState = {key:null, asc:true};
+	Array.from(table.querySelectorAll('th.sortable')).forEach(th => {
+		th.style.cursor = 'pointer';
+		th.addEventListener('click', () => {
+			const key = th.dataset.key;
+			if(!key) return;
+			sortState.asc = (sortState.key === key) ? !sortState.asc : true;
+			sortState.key = key;
+			sortBy(key, sortState.asc);
+			// update header arrows
+			Array.from(table.querySelectorAll('th.sortable')).forEach(h=>{
+				h.textContent = h.textContent.replace(/\s*[▾▴]/g,'') + ' ▾';
+			});
+			th.textContent = th.textContent.replace(/\s*[▾▴]/g,'') + (sortState.asc ? ' ▴' : ' ▾');
+		});
+	});
+
+	function sortBy(key, asc){
+		const current = Array.from(tbody.querySelectorAll('tr')).map(tr=>{
+			const cells = tr.children;
+			return {
+				rowHtml: tr.innerHTML,
+				name: cells[0].textContent.trim(),
+				elements: Number(cells[1].textContent.trim()) || 0,
+				alcateia: Number(cells[2].textContent.trim()) || 0,
+				tribo_esc: Number(cells[3].textContent.trim()) || 0,
+				tribo_exp: Number(cells[4].textContent.trim()) || 0,
+				cla: Number(cells[5].textContent.trim()) || 0,
+				chefia: Number(cells[6].textContent.trim()) || 0,
+				quotas: cells[7].textContent.trim()
+			};
+		});
+
+		current.sort((a,b) => {
+			let va = a[key], vb = b[key];
+			// try numeric compare
+			if(typeof va === 'number' && typeof vb === 'number') return asc ? va - vb : vb - va;
+			// quotas percent -> numeric
+			if(key === 'quotas'){
+				const na = parseFloat(va) || 0;
+				const nb = parseFloat(vb) || 0;
+				return asc ? na - nb : nb - na;
+			}
+			va = (''+va).toLowerCase(); vb = (''+vb).toLowerCase();
+			if(va < vb) return asc ? -1 : 1;
+			if(va > vb) return asc ? 1 : -1;
+			return 0;
+		});
+
+		// rebuild rows
+		tbody.innerHTML = '';
+		const frag = document.createDocumentFragment();
+		current.forEach(c => {
+			const tr = document.createElement('tr');
+			tr.className = 'row-link';
+			// find id from groups array by name (simple)
+			const g = groups.find(x => x.name === c.name) || groups[0];
+			tr.dataset.href = `../pages/grupo.html?id=${encodeURIComponent(g.id)}`;
+			tr.innerHTML = `
+				<td>${c.name}</td>
+				<td>${c.elements}</td>
+				<td>${c.alcateia}</td>
+				<td>${c.tribo_esc}</td>
+				<td>${c.tribo_exp}</td>
+				<td>${c.cla}</td>
+				<td>${c.chefia}</td>
+				<td>${c.quotas}</td>
+			`;
+			frag.appendChild(tr);
+		});
+		tbody.appendChild(frag);
+	}
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+	const select = document.getElementById('adminSelect');
+	if (!select) return;
+	const sections = Array.from(document.querySelectorAll('.admin-section'));
+
+	function showKey(key){
+		sections.forEach(s => s.classList.toggle('active', s.dataset.key === key));
+	}
+
+	// restore last option if exists
+	try{
+		const last = localStorage.getItem('eaep.lastAdmin');
+		if(last && [...select.options].some(o=>o.value===last)) select.value = last;
+	} catch(e){}
+
+	showKey(select.value);
+
+	select.addEventListener('change', (e) => {
+		showKey(e.target.value);
+		try{ localStorage.setItem('eaep.lastAdmin', e.target.value); }catch(e){}
+	});
+});

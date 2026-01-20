@@ -694,3 +694,30 @@ select:focus{
 	#divisionTable thead th, #divisionTable td{padding:8px}
 }
 
+/* STATISTICS sections */
+#statistics-sections{display:flex;flex-direction:column;gap:12px}
+.stats-section{display:none}
+.stats-section.active{display:block}
+
+/* small helpers reuse page-card small */
+.page-card.small{padding:10px}
+
+/* Groups table small tweaks */
+#groupsTable thead th{background:#f1f5f9;padding:10px;text-align:left;border:1px solid #e6e9ef;position:sticky;top:0;z-index:3}
+#groupsTable th,#groupsTable td{padding:8px 10px;border:1px solid #e6e9ef;vertical-align:middle;word-break:break-word}
+#groupsTable tbody tr:hover td{filter:brightness(0.98)}
+.row-link{cursor:pointer}
+
+/* ADMINISTRATIVE MANAGEMENT */
+#admin-sections{display:flex;flex-direction:column;gap:12px}
+.admin-section{display:none}
+.admin-section.active{display:block}
+
+/* pequenas listas limpas */
+.clean-list{list-style:none;padding:0;margin:0}
+.clean-list li{margin-bottom:6px}
+
+/* reutiliza summary-table para tabelas */
+.summary-table{width:100%;border-collapse:collapse;table-layout:fixed}
+.summary-table th, .summary-table td{border:1px solid #e6e9ef;padding:8px;text-align:left}
+.summary-table th{background:#f3f4f6;font-weight:600}

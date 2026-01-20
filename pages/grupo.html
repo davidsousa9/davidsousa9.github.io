@@ -27,20 +27,306 @@
 			</div>
 
 			<div id="a" class="panel active">
-				<h2>Estatística</h2>
+				<section class="page-card" id="statistics-section">
+					<h2>Estatística</h2>
 
-				<p>Dados Elementos GR</p>
-				<p>Balanço Financeiro</p>
-				<p>Tempo de permanência</p>
-				<p>Progresso / Formação</p>
-				<p>Atividades Conta Bancária</p>
-				<p>Conta Caixa</p>
-				<p>Conta Caixa Divisões</p>
-				<p>Conta Caixa Elementos</p>
+					<div class="page-card">
+						<label for="statisticsSelect" class="small">Selecionar visão:</label>
+						<select id="statisticsSelect" aria-label="Selecionar secção de estatística">
+							<option value="dados_elementos">Dados Elementos</option>
+							<option value="balanco_financeiro">Balanço Financeiro</option>
+							<option value="tempo_permanencia">Tempo de Permanência</option>
+							<option value="progresso_formacao">Progresso / Formação</option>
+							<option value="atividades_conta">Atividades • Conta Bancária</option>
+							<option value="conta_caixa">Conta Caixa</option>
+							<option value="conta_caixa_divisoes">Conta Caixa • Divisões</option>
+							<option value="conta_caixa_elementos">Conta Caixa • Elementos</option>
+						</select>
+					</div>
+
+					<div id="statistics-sections">
+						<!-- Dados Elementos -->
+						<section class="stats-section active" data-key="dados_elementos">
+							<div class="page-card">
+								<h3>Dados — Elementos</h3>
+								<div class="grid-3" style="margin-top:8px">
+									<div class="page-card small">
+										<strong>Total Elementos</strong>
+										<div class="small">69</div>
+									</div>
+									<div class="page-card small">
+										<strong>Por Secção</strong>
+										<div class="small">Alcateia: 20 • Tribo Escoteiros: 18 • Tribo Exploradores: 15 • Clã: 8</div>
+									</div>
+									<div class="page-card small">
+										<strong>Dirigentes</strong>
+										<div class="small">8</div>
+									</div>
+								</div>
+
+								<table class="summary-table" style="margin-top:12px">
+									<thead><tr><th>Secção</th><th>Elementos</th><th>Idade média</th><th>Assiduidade (%)</th></tr></thead>
+									<tbody>
+										<tr><td>Alcateia</td><td>20</td><td>8.3</td><td>88%</td></tr>
+										<tr><td>Tribo de Escoteiros</td><td>18</td><td>12.1</td><td>85%</td></tr>
+										<tr><td>Tribo de Exploradores</td><td>15</td><td>15.8</td><td>82%</td></tr>
+										<tr><td>Clã</td><td>8</td><td>19.4</td><td>78%</td></tr>
+										<tr><td>Chefia</td><td>8</td><td>35.7</td><td>92%</td></tr>
+									</tbody>
+								</table>
+							</div>
+						</section>
+
+						<!-- Balanço Financeiro -->
+						<section class="stats-section" data-key="balanco_financeiro">
+							<div class="page-card">
+								<h3>Balanço Financeiro — Exercício (fictício)</h3>
+
+								<div class="grid-3" style="margin-top:8px">
+									<div class="page-card small">
+										<strong>Receitas</strong>
+										<div class="small">€ 12.480,00</div>
+									</div>
+									<div class="page-card small">
+										<strong>Despesas</strong>
+										<div class="small">€ -7.740,00</div>
+									</div>
+									<div class="page-card small">
+										<strong>Resultado</strong>
+										<div class="small">€ +4.740,00</div>
+									</div>
+								</div>
+
+								<table class="summary-table" style="margin-top:12px">
+									<thead><tr><th>Categoria</th><th>Valor</th></tr></thead>
+									<tbody>
+										<tr><td>Quotas</td><td>€ +4.800,00</td></tr>
+										<tr><td>Atividades</td><td>€ +3.200,00</td></tr>
+										<tr><td>Doações</td><td>€ +4.480,00</td></tr>
+										<tr><td>Despesas Gerais</td><td>€ -4.000,00</td></tr>
+										<tr><td>Despesas Eventos</td><td>€ -3.740,00</td></tr>
+									</tbody>
+								</table>
+							</div>
+						</section>
+
+						<!-- Tempo de permanência -->
+						<section class="stats-section" data-key="tempo_permanencia">
+							<div class="page-card">
+								<h3>Tempo de Permanência</h3>
+								<p class="small">Distribuição média do tempo de permanência dos elementos no grupo (anos).</p>
+
+								<table class="summary-table" style="margin-top:12px">
+									<thead><tr><th>Faixa</th><th>Elementos</th></tr></thead>
+									<tbody>
+										<tr><td>&lt;1 ano</td><td>8</td></tr>
+										<tr><td>1-3 anos</td><td>20</td></tr>
+										<tr><td>3-5 anos</td><td>18</td></tr>
+										<tr><td>&gt;5 anos</td><td>23</td></tr>
+									</tbody>
+								</table>
+							</div>
+						</section>
+
+						<!-- Progresso / Formação -->
+						<section class="stats-section" data-key="progresso_formacao">
+							<div class="page-card">
+								<h3>Progresso / Formação</h3>
+								<p class="small">Resumo de formação e progresso (ex.: % conclusões de desafios por tipo).</p>
+
+								<div class="grid-3" style="margin-top:8px">
+									<div class="page-card small"><strong>Formação de Dirigentes</strong><div class="small">Concluído: 60%</div></div>
+									<div class="page-card small"><strong>Etapas PPJ</strong><div class="small">Média: 4</div></div>
+									<div class="page-card small"><strong>Desafios PPJ</strong><div class="small">Concluídos em 2025 / 2026: 38</div></div>
+								</div>
+
+								<table class="summary-table" style="margin-top:12px">
+									<thead><tr><th>Formação</th><th>Elementos inscritos</th><th>Conclusão (%)</th><th>Divisão</th></tr></thead>
+									<tbody>
+										<tr><td>Primeiros Socorros</td><td>28</td><td>92%</td><td>Todos</td></tr>
+										<tr><td>Orientação</td><td>34</td><td>85%</td><td>Tribo de Escoteiros</td></tr>
+										<tr><td>Segurança em Campo</td><td>21</td><td>77%</td><td>Alcateia</td></tr>
+									</tbody>
+								</table>
+							</div>
+						</section>
+
+						<!-- Atividades • Conta Bancária -->
+						<section class="stats-section" data-key="atividades_conta">
+							<div class="page-card">
+								<h3>Atividades • Conta Bancária</h3>
+								<p class="small">Transacções de exemplo associadas a atividades.</p>
+
+								<table class="summary-table" style="margin-top:12px">
+									<thead><tr><th>Data</th><th>Atividade</th><th>Entradas</th><th>Saídas</th></tr></thead>
+									<tbody>
+										<tr><td>2025-01-05</td><td>Venda de bolos</td><td>€120,00</td><td>—</td></tr>
+										<tr><td>2025-01-12</td><td>Compra material</td><td>—</td><td>€45,00</td></tr>
+										<tr><td>2025-02-02</td><td>Inscrições formação</td><td>€400,00</td><td>—</td></tr>
+									</tbody>
+								</table>
+							</div>
+						</section>
+
+						<!-- Conta Caixa -->
+						<section class="stats-section" data-key="conta_caixa">
+							<div class="page-card">
+								<h3>Conta Caixa</h3>
+
+								<table class="summary-table" style="margin-top:12px">
+									<thead><tr><th>Data</th><th>Descrição</th><th>Entrada</th><th>Saída</th><th>Saldo</th></tr></thead>
+									<tbody>
+										<tr><td>2025-01-01</td><td>Saldo inicial</td><td>€2.000,00</td><td>—</td><td>€2.000,00</td></tr>
+										<tr><td>2025-01-05</td><td>Venda de bilhetes</td><td>€120,00</td><td>—</td><td>€2.120,00</td></tr>
+										<tr><td>2025-01-12</td><td>Compra material</td><td>—</td><td>€45,00</td><td>€2.075,00</td></tr>
+									</tbody>
+								</table>
+							</div>
+						</section>
+
+						<!-- Conta Caixa Divisões -->
+						<section class="stats-section" data-key="conta_caixa_divisoes">
+							<div class="page-card">
+								<h3>Conta Caixa — Por Divisão</h3>
+
+								<table class="summary-table" style="margin-top:12px">
+									<thead><tr><th>Divisão</th><th>Saldo Caixa</th><th>Comentários</th></tr></thead>
+									<tbody>
+										<tr><td>Alcateia</td><td>€ 420,00</td><td>Material novo reservado</td></tr>
+										<tr><td>Tribo Escoteiros</td><td>€ 380,00</td><td>Fundo atividades</td></tr>
+										<tr><td>Tribo Exploradores</td><td>€ 300,00</td><td>Em curso</td></tr>
+										<tr><td>Clã</td><td>€ 220,00</td><td>Projetos</td></tr>
+										<tr><td>Chefia</td><td>€ 120,00</td><td>Reservas administrativas</td></tr>
+									</tbody>
+								</table>
+							</div>
+						</section>
+
+						<!-- Conta Caixa Elementos -->
+						<section class="stats-section" data-key="conta_caixa_elementos">
+							<div class="page-card">
+								<h3>Conta Caixa — Saldo por Elemento</h3>
+
+								<table class="summary-table" style="margin-top:12px">
+									<thead><tr><th>Elemento</th><th>Nº Associativo</th><th>Saldo</th></tr></thead>
+									<tbody>
+										<tr><td>João M. F. Pereira</td><td>45982</td><td>€24,50</td></tr>
+										<tr><td>Sofia A. Silva</td><td>45983</td><td>€12,00</td></tr>
+										<tr><td>Pedro Nunes</td><td>45984</td><td>€0,00</td></tr>
+									</tbody>
+								</table>
+							</div>
+						</section>
+					</div>
+				</section>
 			</div>
 
 			<div id="b" class="panel">
-				<h2>Gestão Administrativa</h2>
+				<section class="page-card" id="administrative-section">
+					<h2>Gestão Administrativa</h2>
+
+					<div class="page-card">
+						<label for="adminSelect" class="small">Selecionar secção:</label>
+						<select id="adminSelect" aria-label="Selecionar secção de Gestão Administrativa">
+							<option value="registo_membros">Registo de Membros</option>
+							<option value="documentacao">Documentação</option>
+							<option value="reunioes">Reuniões</option>
+							<option value="comunicacao">Comunicação</option>
+							<option value="politicas_proc">Políticas e Procedimentos</option>
+							<option value="relatorios">Relatórios Administrativos</option>
+							<option value="apoio_externo">Relação com Entidades</option>
+						</select>
+					</div>
+
+					<div id="admin-sections">
+						<section class="admin-section active" data-key="registo_membros">
+							<div class="page-card">
+								<h3>Registo de Membros</h3>
+								<p class="small">Gestão e atualizações do registo de associados do grupo.</p>
+								<ul class="clean-list">
+									<li><strong>Base de dados de associados:</strong> atualizada com nomes, contactos e categorias (escoteiro/dirigente/colaborador).</li>
+									<li><strong>Emissão de certificados:</strong> certificados de associação e de formação disponíveis.</li>
+									<li><strong>Controlo de presenças:</strong> registos semanais de presença nos encontros.</li>
+								</ul>
+							</div>
+						</section>
+
+						<section class="admin-section" data-key="documentacao">
+							<div class="page-card">
+								<h3>Documentação</h3>
+								<p class="small">Manutenção de ficheiros e documentação oficial.</p>
+								<ul class="clean-list">
+									<li><strong>Políticas internas</strong> organizadas e acessíveis aos dirigentes.</li>
+									<li><strong>Relatórios de atividades</strong> arquivados por ano.</li>
+									<li><strong>Termos de responsabilidade</strong> assinados por pais/encarregados de educação.</li>
+								</ul>
+							</div>
+						</section>
+
+						<section class="admin-section" data-key="reunioes">
+							<div class="page-card">
+								<h3>Reuniões</h3>
+								<p class="small">Registo e planeamento de reuniões administrativas e de chefia.</p>
+								<ul class="clean-list">
+									<li><strong>Agenda anual:</strong> datas das reuniões gerais e extras.</li>
+									<li><strong>Atas:</strong> atas publicadas com responsáveis e decisões tomada.</li>
+									<li><strong>Convocatórias:</strong> enviadas a todos os dirigentes atempadamente.</li>
+								</ul>
+							</div>
+						</section>
+
+						<section class="admin-section" data-key="comunicacao">
+							<div class="page-card">
+								<h3>Comunicação</h3>
+								<p class="small">Fluxos de comunicação interna e externa do grupo.</p>
+								<ul class="clean-list">
+									<li><strong>Newsletter:</strong> circulares mensais para encarregados e membros.</li>
+									<li><strong>Contacto de emergência:</strong> lista atualizada com contactos essenciais.</li>
+									<li><strong>Presença online:</strong> página web e redes sociais atualizadas.</li>
+								</ul>
+							</div>
+						</section>
+
+						<section class="admin-section" data-key="politicas_proc">
+							<div class="page-card">
+								<h3>Políticas e Procedimentos</h3>
+								<p class="small">Regras internas e procedimentos de funcionamento.</p>
+								<ul class="clean-list">
+									<li><strong>Manual de procedimentos:</strong> orientações para operações regulares.</li>
+									<li><strong>Política de segurança:</strong> regras de segurança em atividades (primeiros socorros, transportes, saúde).</li>
+									<li><strong>Política anti‑assédio:</strong> compromisso de conduta inclusiva e segura.</li>
+								</ul>
+							</div>
+						</section>
+
+						<section class="admin-section" data-key="relatorios">
+							<div class="page-card">
+								<h3>Relatórios Administrativos</h3>
+								<p class="small">Sumários administrativos e indicadores de funcionamento.</p>
+								<table class="summary-table" style="margin-top:12px">
+									<thead><tr><th>Tipo de Relatório</th><th>Última versão</th><th>Responsável</th></tr></thead>
+									<tbody>
+										<tr><td>Relatório anual de atividades</td><td>2025‑12‑31</td><td>Chefe de Grupo</td></tr>
+										<tr><td>Relatório de formação de Dirigentes</td><td>2025‑11‑10</td><td>Coordenador de Formação</td></tr>
+										<tr><td>Relatório de compliance</td><td>2025‑12‑01</td><td>Secretário</td></tr>
+									</tbody>
+								</table>
+							</div>
+						</section>
+
+						<section class="admin-section" data-key="apoio_externo">
+							<div class="page-card">
+								<h3>Relação com Entidades Externas</h3>
+								<p class="small">Coordenação de contactos oficiais e parcerias.</p>
+								<ul class="clean-list">
+									<li><strong>Autarquia local:</strong> relatórios e pedidos de apoio.</li>
+									<li><strong>Serviços centrais da associação:</strong> envio de dados e cumprimento de obrigações estatutárias.</li>
+									<li><strong>Parceiros e patrocínios:</strong> gestão das relações com entidades colaboradoras e patrocinadores.</li>
+								</ul>
+							</div>
+						</section>
+					</div>
+				</section>
 			</div>
 
 			<div id="c" class="panel">

@@ -33,11 +33,146 @@
 			</div>
 
 			<div id="b" class="panel">
-				<h2>Gestão Administrativa</h2>
+				<section class="page-card" id="administrative-section">
+					<h2>Gestão Administrativa</h2>
+
+					<div class="page-card">
+						<label for="adminSelect" class="small">Selecionar secção:</label>
+						<select id="adminSelect" aria-label="Selecionar secção de Gestão Administrativa">
+							<option value="registo_membros">Registo de Membros</option>
+							<option value="documentacao">Documentação</option>
+							<option value="reunioes">Reuniões</option>
+							<option value="comunicacao">Comunicação</option>
+							<option value="politicas_proc">Políticas e Procedimentos</option>
+							<option value="relatorios">Relatórios Administrativos</option>
+							<option value="apoio_externo">Relação com Entidades</option>
+						</select>
+					</div>
+
+					<div id="admin-sections">
+						<section class="admin-section active" data-key="registo_membros">
+							<div class="page-card">
+								<h3>Registo de Membros</h3>
+								<p class="small">Gestão e atualizações do registo de associados do grupo.</p>
+								<ul class="clean-list">
+									<li><strong>Base de dados de associados:</strong> atualizada com nomes, contactos e categorias (escoteiro/dirigente/colaborador).</li>
+									<li><strong>Emissão de certificados:</strong> certificados de associação e de formação disponíveis.</li>
+									<li><strong>Controlo de presenças:</strong> registos semanais de presença nos encontros.</li>
+								</ul>
+							</div>
+						</section>
+
+						<section class="admin-section" data-key="documentacao">
+							<div class="page-card">
+								<h3>Documentação</h3>
+								<p class="small">Manutenção de ficheiros e documentação oficial.</p>
+								<ul class="clean-list">
+									<li><strong>Políticas internas</strong> organizadas e acessíveis aos dirigentes.</li>
+									<li><strong>Relatórios de atividades</strong> arquivados por ano.</li>
+									<li><strong>Termos de responsabilidade</strong> assinados por pais/encarregados de educação.</li>
+								</ul>
+							</div>
+						</section>
+
+						<section class="admin-section" data-key="reunioes">
+							<div class="page-card">
+								<h3>Reuniões</h3>
+								<p class="small">Registo e planeamento de reuniões administrativas e de chefia.</p>
+								<ul class="clean-list">
+									<li><strong>Agenda anual:</strong> datas das reuniões gerais e extras.</li>
+									<li><strong>Atas:</strong> atas publicadas com responsáveis e decisões tomada.</li>
+									<li><strong>Convocatórias:</strong> enviadas a todos os dirigentes atempadamente.</li>
+								</ul>
+							</div>
+						</section>
+
+						<section class="admin-section" data-key="comunicacao">
+							<div class="page-card">
+								<h3>Comunicação</h3>
+								<p class="small">Fluxos de comunicação interna e externa do grupo.</p>
+								<ul class="clean-list">
+									<li><strong>Newsletter:</strong> circulares mensais para encarregados e membros.</li>
+									<li><strong>Contacto de emergência:</strong> lista atualizada com contactos essenciais.</li>
+									<li><strong>Presença online:</strong> página web e redes sociais atualizadas.</li>
+								</ul>
+							</div>
+						</section>
+
+						<section class="admin-section" data-key="politicas_proc">
+							<div class="page-card">
+								<h3>Políticas e Procedimentos</h3>
+								<p class="small">Regras internas e procedimentos de funcionamento.</p>
+								<ul class="clean-list">
+									<li><strong>Manual de procedimentos:</strong> orientações para operações regulares.</li>
+									<li><strong>Política de segurança:</strong> regras de segurança em atividades (primeiros socorros, transportes, saúde).</li>
+									<li><strong>Política anti‑assédio:</strong> compromisso de conduta inclusiva e segura.</li>
+								</ul>
+							</div>
+						</section>
+
+						<section class="admin-section" data-key="relatorios">
+							<div class="page-card">
+								<h3>Relatórios Administrativos</h3>
+								<p class="small">Sumários administrativos e indicadores de funcionamento.</p>
+								<table class="summary-table" style="margin-top:12px">
+									<thead><tr><th>Tipo de Relatório</th><th>Última versão</th><th>Responsável</th></tr></thead>
+									<tbody>
+										<tr><td>Relatório anual de atividades</td><td>2025‑12‑31</td><td>Chefe de Grupo</td></tr>
+										<tr><td>Relatório de formação de Dirigentes</td><td>2025‑11‑10</td><td>Coordenador de Formação</td></tr>
+										<tr><td>Relatório de compliance</td><td>2025‑12‑01</td><td>Secretário</td></tr>
+									</tbody>
+								</table>
+							</div>
+						</section>
+
+						<section class="admin-section" data-key="apoio_externo">
+							<div class="page-card">
+								<h3>Relação com Entidades Externas</h3>
+								<p class="small">Coordenação de contactos oficiais e parcerias.</p>
+								<ul class="clean-list">
+									<li><strong>Autarquia local:</strong> relatórios e pedidos de apoio.</li>
+									<li><strong>Serviços centrais da associação:</strong> envio de dados e cumprimento de obrigações estatutárias.</li>
+									<li><strong>Parceiros e patrocínios:</strong> gestão das relações com entidades colaboradoras e patrocinadores.</li>
+								</ul>
+							</div>
+						</section>
+					</div>
+				</section>
 			</div>
 
 			<div id="c" class="panel">
-				<h2>Gestão Grupos</h2>
+				<section class="page-card" id="groups-section">
+					<h2>Gestão Grupos</h2>
+
+					<div class="table-controls" style="display:flex;gap:12px;align-items:center;margin-bottom:12px">
+						<label style="flex:1">
+							<span class="small">Pesquisar (Nome):</span><br>
+							<input id="groupsSearch" type="search" placeholder="Pesquisar grupos..." style="width:100%;padding:8px;border-radius:6px;border:1px solid #e6e9ef">
+						</label>
+
+						<button id="resetGroups" class="btn secondary" style="height:38px">Reset</button>
+					</div>
+
+					<div class="table-wrap">
+						<table id="groupsTable" class="progress-table" role="table" aria-label="Lista de grupos">
+							<thead>
+								<tr>
+									<th data-key="name" class="sortable" scope="col">Nome ▾</th>
+									<th data-key="elements" class="sortable" scope="col">Elementos ▾</th>
+									<th data-key="alcateia" class="sortable" scope="col"># Alcateia ▾</th>
+									<th data-key="tribo_esc" class="sortable" scope="col"># Tribo de Escoteiros ▾</th>
+									<th data-key="tribo_exp" class="sortable" scope="col"># Tribo de Exploradores ▾</th>
+									<th data-key="cla" class="sortable" scope="col"># Clã ▾</th>
+									<th data-key="chefia" class="sortable" scope="col"># Chefia ▾</th>
+									<th data-key="quotas" class="sortable" scope="col">Quotas Regularizadas ▾</th>
+								</tr>
+							</thead>
+							<tbody>
+								<!-- preenchido por JS -->
+							</tbody>
+						</table>
+					</div>
+				</section>
 			</div>
 
 			<div id="d" class="panel">
