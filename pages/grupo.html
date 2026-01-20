@@ -19,7 +19,7 @@
 				<button class="hbtn" data-panel="b">Gestão Administrativa</button>
 				<button class="hbtn" data-panel="c">Gestão Financeira</button>
 				<button class="hbtn" data-panel="d">Inventário</button>
-				<button class="hbtn" data-panel="d">Elementos</button>
+				<button class="hbtn" data-panel="e">Elementos</button>
 				<button class="hbtn" data-panel="f">Atividades</button>
 				<button class="hbtn" data-panel="g">SMU Grupo</button>
 				<button class="hbtn" data-panel="h">PAG</button>
@@ -46,14 +46,171 @@
 			<div id="c" class="panel">
 				<h2>Gestão Financeira</h2>
 
-				<p>Relatório de Contas</p>
-				<p>Gestão Financeira</p>
-				<p>Atividades</p>
-				<p>Folha de Caixa</p>
-				<p>Balancete</p>
-				<p>Orçamento e Relatório</p>
-				<p>Fundo da Divisão</p>
-				<p>Fundos Individuais</p>
+				<div class="page-card">
+					<label for="financeSelect" class="small">Selecionar secção:</label>
+					<select id="financeSelect" aria-label="Selecionar secção financeira">
+						<option value="relatorio">Relatório de Contas</option>
+						<option value="gestao">Gestão Financeira</option>
+						<option value="atividades">Atividades</option>
+						<option value="folha">Folha de Caixa</option>
+						<option value="balancete">Balancete</option>
+						<option value="orcamento">Orçamento e Relatório</option>
+						<option value="fundo_divisao">Fundo da Divisão</option>
+						<option value="fundos_individuais">Fundos Individuais</option>
+					</select>
+				</div>
+
+				<div id="finance-sections">
+					<!-- Relatório de Contas (default) -->
+					<section class="finance-section active" data-key="relatorio">
+						<div class="page-card">
+							<h3>Relatório de Contas — Grupo ABC (ano 2025)</h3>
+							<p class="small">Resumo e pontos mais relevantes do exercício.</p>
+
+							<div class="grid-3" style="margin-top:12px">
+								<div class="page-card small">
+									<strong>Receitas</strong>
+									<div class="small">€ 12.480,00</div>
+								</div>
+								<div class="page-card small">
+									<strong>Despesas</strong>
+									<div class="small">€ 8.740,00</div>
+								</div>
+								<div class="page-card small">
+									<strong>Saldo</strong>
+									<div class="small">€ 3.740,00</div>
+								</div>
+							</div>
+
+							<table class="summary-table" style="margin-top:12px">
+								<thead>
+									<tr><th>Categoria</th><th>Valor</th><th>Notas</th></tr>
+								</thead>
+								<tbody>
+									<tr><td>Quota Anual</td><td>€ 4.800,00</td><td>300 elementos</td></tr>
+									<tr><td>Atividades (inscrições)</td><td>€ 3.200,00</td><td>Acampamentos e workshops</td></tr>
+									<tr><td>Doações e Subvenções</td><td>€ 4.480,00</td><td>Subvenção Municipal</td></tr>
+								</tbody>
+							</table>
+
+							<p class="small" style="margin-top:8px">Exportar: <a href="#" class="small">CSV</a> • <a href="#" class="small">PDF</a></p>
+						</div>
+					</section>
+
+					<!-- Gestão Financeira -->
+					<section class="finance-section" data-key="gestao">
+						<div class="page-card">
+							<h3>Gestão Financeira</h3>
+							<p class="small">Fluxo de caixa, contas bancárias e regras internas.</p>
+
+							<ul class="clean-list" style="margin-top:12px">
+								<li><strong>Conta corrente:</strong> Banco X — IBAN PT50 XXXX 0000 0000 0000 00</li>
+								<li><strong>Saldo disponível:</strong> € 3.740,00</li>
+								<li><strong>Responsável financeiro:</strong> Maria dos Santos</li>
+							</ul>
+
+							<div style="margin-top:12px" class="page-card small">
+								<strong>Alertas</strong>
+								<p class="small">Falta prestação de contas do fim de semana (Acampamento Norte).</p>
+							</div>
+						</div>
+					</section>
+
+					<!-- Atividades -->
+					<section class="finance-section" data-key="atividades">
+						<div class="page-card">
+							<h3>Atividades</h3>
+							<p class="small">Resumo financeiro por atividade (exemplos fictícios).</p>
+
+							<table class="summary-table" style="margin-top:12px">
+								<thead><tr><th>Atividade</th><th>Receitas</th><th>Despesas</th><th>Saldo</th></tr></thead>
+								<tbody>
+									<tr><td>Acampamento Regional</td><td>€ 1.200,00</td><td>€ 800,00</td><td>€ 400,00</td></tr>
+									<tr><td>Formação Dirigentes</td><td>€ 400,00</td><td>€ 250,00</td><td>€ 150,00</td></tr>
+									<tr><td>Jamboree Local</td><td>€ 600,00</td><td>€ 500,00</td><td>€ 100,00</td></tr>
+								</tbody>
+							</table>
+						</div>
+					</section>
+
+					<!-- Folha de Caixa -->
+					<section class="finance-section" data-key="folha">
+						<div class="page-card">
+							<h3>Folha de Caixa — Últimas movimentações</h3>
+
+							<table class="summary-table" style="margin-top:12px">
+								<thead><tr><th>Data</th><th>Descrição</th><th>Entradas</th><th>Saídas</th></tr></thead>
+								<tbody>
+									<tr><td>2025-01-05</td><td>Venda de bolos</td><td>€ 120,00</td><td>—</td></tr>
+									<tr><td>2025-01-12</td><td>Compra material (kit primeiros socorros)</td><td>—</td><td>€ 45,00</td></tr>
+									<tr><td>2025-02-02</td><td>Inscrições - Formação</td><td>€ 400,00</td><td>—</td></tr>
+								</tbody>
+							</table>
+						</div>
+					</section>
+
+					<!-- Balancete -->
+					<section class="finance-section" data-key="balancete">
+						<div class="page-card">
+							<h3>Balancete (extrato sintético)</h3>
+
+							<table class="summary-table" style="margin-top:12px">
+								<thead><tr><th>Conta</th><th>Débito</th><th>Crédito</th></tr></thead>
+								<tbody>
+									<tr><td>Caixa</td><td>€ 4.200,00</td><td>€ 460,00</td></tr>
+									<tr><td>Bancos</td><td>€ 8.280,00</td><td>€ 2.540,00</td></tr>
+									<tr><td>Despesas</td><td>€ 8.740,00</td><td>—</td></tr>
+								</tbody>
+							</table>
+						</div>
+					</section>
+
+					<!-- Orçamento e Relatório -->
+					<section class="finance-section" data-key="orcamento">
+						<div class="page-card">
+							<h3>Orçamento e Relatório</h3>
+							<p class="small">Orçamento previsional para o próximo ano e relatório de execução atual.</p>
+
+							<ul class="clean-list" style="margin-top:12px">
+								<li><strong>Orçamento 2026 — Receitas previstas:</strong> € 13.000,00</li>
+								<li><strong>Orçamento 2026 — Despesas previstas:</strong> € 12.200,00</li>
+								<li><strong>Notas:</strong> prioridade em formação de dirigentes.</li>
+							</ul>
+						</div>
+					</section>
+
+					<!-- Fundo da Divisão -->
+					<section class="finance-section" data-key="fundo_divisao">
+						<div class="page-card">
+							<h3>Fundo da Divisão</h3>
+							<table class="summary-table" style="margin-top:12px">
+								<thead><tr><th>Divisão</th><th>Nº de Elementos</th><th>Saldo</th></tr></thead>
+								<tbody>
+									<tr><td>Alcateia</td><td>9</td><td>€ 250,00</td></tr>
+									<tr><td>Tribo de Escoteiros</td><td>8</td><td>€ 250,00</td></tr>
+									<tr><td>Tribo de Exploradores</td><td>7</td><td>€ 250,00</td></tr>
+									<tr><td>Clã</td><td>6</td><td>€ 250,00</td></tr>
+									<tr><td>Chefia</td><td>5</td><td>€ 250,00</td></tr>
+								</tbody>
+							</table>
+						</div>
+					</section>
+
+					<!-- Fundos Individuais -->
+					<section class="finance-section" data-key="fundos_individuais">
+						<div class="page-card">
+							<h3>Fundos Individuais</h3>
+							<table class="summary-table" style="margin-top:12px">
+								<thead><tr><th>Elemento</th><th>Nº Associativo</th><th>Saldo</th></tr></thead>
+								<tbody>
+									<tr><td>João M. F. Pereira</td><td>45982</td><td>€ 24,50</td></tr>
+									<tr><td>Sofia A. Silva</td><td>45983</td><td>€ 12,00</td></tr>
+									<tr><td>Pedro Nunes</td><td>45984</td><td>€ 0,00</td></tr>
+								</tbody>
+							</table>
+						</div>
+					</section>
+				</div>
 			</div>
 
 			<div id="d" class="panel">
@@ -61,7 +218,45 @@
 			</div>
 
 			<div id="e" class="panel">
+				<section class="page-card" id="people-table-section">
 				<h2>Elementos</h2>
+
+				<div class="table-controls" style="display:flex;gap:12px;align-items:center;margin-bottom:12px">
+					<label>
+						<span class="small">Filtrar Divisão:</span><br>
+						<select id="divisionFilter">
+							<option value="all">Todas</option>
+							<option value="Alcateia">Alcateia</option>
+							<option value="Tribo de Escoteiros">Tribo de Escoteiros</option>
+							<option value="Tribo de Exploradores">Tribo de Exploradores</option>
+							<option value="Clã">Clã</option>
+							<option value="Chefia">Chefia</option>
+						</select>
+					</label>
+
+					<label style="margin-left:8px;flex:1">
+						<span class="small">Pesquisar (Nome / Nº Associativo):</span><br>
+						<input id="tableSearch" type="search" placeholder="Escreve para pesquisar..." style="width:100%;padding:8px;border-radius:6px;border:1px solid #e6e9ef">
+					</label>
+
+					<button id="resetTable" class="btn secondary" style="height:38px">Reset</button>
+				</div>
+
+				<div class="table-wrap">
+					<table id="peopleTable" class="progress-table" role="table" aria-label="Lista de elementos">
+						<thead>
+							<tr>
+								<th data-key="division" class="col-fixed-division" scope="col">Divisão</th>
+								<th data-key="name" scope="col" class="sortable">Nome ▾</th>
+								<th data-key="num" scope="col" class="sortable">Número Associativo ▾</th>
+							</tr>
+						</thead>
+						<tbody>
+							<!-- rows are generated by JS -->
+						</tbody>
+					</table>
+				</div>
+			</section>
 			</div>
 
 			<div id="f" class="panel">

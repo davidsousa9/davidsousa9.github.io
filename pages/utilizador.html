@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>eAEP — João Pereira</title>
+		<link rel="stylesheet" href="../css/styles.css">
+	</head>
+	<body>
+		<iframe
+			src="../other/menu.html"
+			class="sidebar-frame"
+		></iframe>
+
+		<div class="content">
+			<h1>João Pereira</h1>
+
+			<div class="hmenu" role="tablist" aria-label="Menu da página">
+				<button class="hbtn active" data-panel="info" aria-selected="true">Informações Pessoais</button>
+				<button class="hbtn" data-panel="progresso">Progresso</button>
+				<button class="hbtn" data-panel="timeline">Timeline Escotista</button>
+			</div>
+
+			<!-- 1 — INFORMAÇÕES PESSOAIS -->
+			<div id="info" class="panel active">
+				<form class="user-form" action="#" method="post" novalidate>
+					<section class="page-card">
+						<h2>Dados Associativos</h2>
+
+						<div class="form-row">
+							<label>Nome:</label>
+							<input type="text" name="nome_associativo" value="João Miguel F. Pereira" placeholder="Nome completo">
+						</div>
+
+						<div class="grid-3">
+							<div class="form-row">
+								<label>Nº Associativo:</label>
+								<input type="text" name="num_assoc" value="AEP-45982">
+							</div>
+							<div class="form-row">
+								<label>Data Adesão:</label>
+								<input type="date" name="data_adesao" value="2010-09-01">
+							</div>
+							<div></div>
+						</div>
+					</section>
+
+					<section class="page-card">
+						<h2>Informações do Escoteiro</h2>
+
+						<div class="form-row">
+							<label>Nome Completo:</label>
+							<input type="text" name="nome_completo" value="João Miguel Fernandes Pereira" placeholder="Nome completo">
+						</div>
+
+						<div class="grid-3">
+							<div class="form-row">
+								<label>Data Nasc.:</label>
+								<input type="date" name="data_nasc" value="2000-05-18">
+							</div>
+							<div class="form-row">
+								<label>Nº Telemóvel:</label>
+								<input type="tel" name="telemovel" value="912345678" placeholder="Telemóvel (se tiver)">
+							</div>
+							<div class="form-row">
+								<label>Email:</label>
+								<input type="email" name="email" value="joao.pereira@example.pt" placeholder="Email (se tiver)">
+							</div>
+						</div>
+
+						<div class="form-row">
+							<label>Género:</label>
+							<div class="inline-controls">
+								<label><input type="radio" name="genero" value="Feminino"> Feminino</label>
+								<label><input type="radio" name="genero" value="Masculino" checked> Masculino</label>
+								<label><input type="radio" name="genero" value="Outro"> Outro / Prefiro Não Dizer</label>
+							</div>
+						</div>
+
+						<div class="grid-3">
+							<div class="form-row">
+								<label>NIF:</label>
+								<input type="text" name="nif" value="245678912">
+							</div>
+							<div class="form-row">
+								<label>CC / Passaporte:</label>
+								<input type="text" name="doc_id" value="CC 12345678">
+							</div>
+							<div class="form-row">
+								<label>Nº Segurança Social:</label>
+								<input type="text" name="seg_social" value="98765432109">
+							</div>
+						</div>
+
+						<div class="grid-3">
+							<div class="form-row">
+								<label>Nº Utente:</label>
+								<input type="text" name="num_utente" value="123123456789">
+							</div>
+							<div class="form-row">
+								<label>Sistema:</label>
+								<select name="sistema_saude">
+									<option value="">—</option>
+									<option selected>SNS</option>
+									<option>SRS</option>
+									<option>ADSE</option>
+									<option>Particular</option>
+									<option>ADM</option>
+								</select>
+							</div>
+							<div class="form-row">
+								<label>Tipo Sanguíneo:</label>
+								<select name="tipo_sang">
+									<option value="">—</option>
+									<option>A+</option><option>A-</option><option>B+</option><option>B-</option>
+									<option>AB+</option><option>AB-</option><option selected>O+</option><option>O-</option>
+									<option>Não Sabe</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="form-row">
+							<label>Morada:</label>
+							<input type="text" name="morada" value="Rua das Acácias, nº 14, 2º Dto" placeholder="Morada completa">
+						</div>
+
+						<div class="grid-3">
+							<div class="form-row">
+								<label>Código Postal:</label>
+								<input type="text" name="cod_postal" value="1500-321" placeholder="____ - ___">
+							</div>
+							<div class="form-row">
+								<label>Naturalidade:</label>
+								<input type="text" name="naturalidade" value="Lisboa">
+							</div>
+							<div class="form-row">
+								<label>Nacionalidade:</label>
+								<input type="text" name="nacionalidade" value="Portuguesa">
+							</div>
+						</div>
+
+						<div class="form-row">
+							<label>Restrições Alimentares:</label>
+							<textarea name="restricoes_alim" rows="2">Sem restrições alimentares conhecidas.</textarea>
+						</div>
+
+						<div class="form-row">
+							<label>Restrições de Saúde:</label>
+							<textarea name="restricoes_saude" rows="2">Alergia ligeira a pólen; toma antihistamínicos quando necessário.</textarea>
+						</div>
+
+						<div class="grid-2">
+							<div class="form-row">
+								<label>Habilitações Académicas:</label>
+								<input type="text" name="habilitacoes" value="Licenciatura em Engenharia Informática">
+							</div>
+							<div class="form-row">
+								<label>Estado Civil:</label>
+								<input type="text" name="estado_civil" value="Solteiro">
+							</div>
+						</div>
+
+						<div class="form-row">
+							<label>Autorização de Imagem:</label>
+							<div class="inline-controls">
+								<label><input type="radio" name="aut_imagem" value="Sim" checked> Sim</label>
+								<label><input type="radio" name="aut_imagem" value="Nao"> Não</label>
+							</div>
+						</div>
+					</section>
+
+					<section class="page-card">
+						<h2>Encarregados de Educação</h2>
+
+						<h3>Encarregado 1</h3>
+						<div class="form-row">
+							<label>Nome:</label>
+							<input type="text" name="enc1_nome" value="Ana Fernandes Pereira">
+						</div>
+						<div class="grid-2">
+							<div class="form-row">
+								<label>Nº Telemóvel:</label>
+								<input type="tel" name="enc1_tel" value="913456789">
+							</div>
+							<div class="form-row">
+								<label>Email:</label>
+								<input type="email" name="enc1_email" value="ana.pereira@example.pt">
+							</div>
+						</div>
+
+						<h3>Encarregado 2</h3>
+						<div class="form-row">
+							<label>Nome:</label>
+							<input type="text" name="enc2_nome" value="Miguel Pereira">
+						</div>
+						<div class="grid-2">
+							<div class="form-row">
+								<label>Nº Telemóvel:</label>
+								<input type="tel" name="enc2_tel" value="914567890">
+							</div>
+							<div class="form-row">
+								<label>Email:</label>
+								<input type="email" name="enc2_email" value="miguel.pereira@example.pt">
+							</div>
+						</div>
+					</section>
+
+					<section class="page-card">
+						<h2>Contacto de Emergência</h2>
+						<div class="form-row">
+							<label>Nome:</label>
+							<input type="text" name="contacto_nome" value="Carlos Fernandes">
+						</div>
+						<div class="form-row">
+							<label>Nº Telemóvel:</label>
+							<input type="tel" name="contacto_tel" value="919876543">
+						</div>
+					</section>
+
+					<div style="display:flex;gap:10px;margin-top:8px">
+						<button type="submit" class="btn primary">Guardar</button>
+						<button type="reset" class="btn secondary">Limpar</button>
+					</div>
+				</form>
+			</div>
+
+			<!-- PROGRESSO — resumo + tabela -->
+			<div id="progresso" class="panel">
+				<section class="page-card">
+					<h2>Resumo do Progresso</h2>
+					<table class="summary-table">
+						<tbody>
+							<tr>
+								<th>Assiduidade Total</th>
+								<td>0%</td>
+
+								<th>Assiduidade 2025 / 2026</th>
+								<td>0%</td>
+
+								<th>Assiduidade Trimestre Atual</th>
+								<td>0%</td>
+
+								<th>Assiduidade Trimestre Passado</th>
+								<td>0%</td>
+							</tr>
+							
+							<tr>
+								<th>Noites em Campo</th>
+								<td>A</td>
+
+								<th>Noites em Tenda / Abrigo</th>
+								<td>B</td>
+								
+								<th></th>
+								<td></td>
+
+								<th></th>
+								<td></td>
+							</tr>
+
+							<tr>
+								<th>Etapa</th>
+								<td>X</td>
+
+								<th>Desafios Totais</th>
+								<td>Y</td>
+
+								<th>Desafios p/ próxima Etapa</th>
+								<td>Z</td>
+
+								<th>Tipos Equilibrados?</th>
+								<td>Não</td>
+							</tr>
+
+							<tr>
+								<th>Integração Alcateia</th>
+								<td>0%</td>
+
+								<th>Integração Tribo de Escoteiros</th>
+								<td>0%</td>
+
+								<th>Integração Tribo de Exploradores</th>
+								<td>0%</td>
+
+								<th>Integração do Clã</th>
+								<td>0%</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+
+				<section class="page-card">
+					<h2>Progresso Pessoal</h2>
+					<div class="table-wrap">
+						<table class="progress-table" role="table" aria-label="Progresso pessoal compacto">
+							<thead>
+								<tr>
+									<th scope="col">Linha</th>
+									<th scope="col">Estilo de Vida Ativo e Saudável</th>
+									<th scope="col">Vida ao Ar Livre</th>
+									<th scope="col">Comunidade e Cidadania</th>
+									<th scope="col">Valores e Atitudes</th>
+									<th scope="col">Vivência Escotista</th>
+									<th scope="col">Competências Pessoais</th>
+									<th scope="col">Criatividade</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr><th scope="row">A</th>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"><div class="squares"><span class="sq yellow"></span></div></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"><div class="squares"><span class="sq yellow"></span></div></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"><div class="squares"><span class="sq yellow"></span></div></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"><div class="squares"><span class="sq yellow"></span><span class="sq green"></span><span class="sq blue"></span><span class="sq red"></span></div></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"><div class="squares"><span class="sq yellow"></span></div></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"><div class="squares"><span class="sq yellow"></span><span class="sq green"></span><span class="sq blue"></span><span class="sq red"></span></div></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"><div class="squares"><span class="sq yellow"></span></div></div></td>
+								</tr>
+								<tr><th scope="row">B</th>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"><div class="squares"><span class="sq yellow"></span></div></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"><div class="squares"><span class="sq yellow"></span></div></div></td>
+								</tr>
+								<tr><th scope="row">C</th>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+								</tr>
+								<tr><th scope="row">D</th>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"><div class="squares"><span class="sq green"></span></div></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"><div class="squares"><span class="sq green"></span><span class="sq blue"></span><span class="sq red"></span></div></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"><div class="squares"><span class="sq green"></span></div></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"><div class="squares"><span class="sq green"></span></div></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"><div class="squares"><span class="sq green"></span></div></div></td>
+								</tr>
+								<tr><th scope="row">E</th>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"><div class="squares"><span class="sq green"></span></div></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"><div class="squares"><span class="sq green"></span></div></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"><div class="squares"><span class="sq green"></span></div></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+								</tr>
+								<tr><th scope="row">F</th>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+								</tr>
+								<tr><th scope="row">G</th>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+								</tr>
+								<tr><th scope="row">H</th>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"><div class="squares"></span><span class="sq blue"></div></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"><div class="squares"></span><span class="sq blue"></div></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"><div class="squares"></span><span class="sq blue"></div></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"><div class="squares"></span><span class="sq blue"></div></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"><div class="squares"></span><span class="sq blue"></div></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"><div class="squares"></span><span class="sq blue"></div></div></td>
+								</tr>
+								<tr><th scope="row">I</th>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"><div class="squares"></span><span class="sq blue"></div></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+								</tr>
+								<tr><th scope="row">J</th>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+								</tr>
+								<tr><th scope="row">K</th>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+								</tr>
+								<tr><th scope="row">L</th>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"><div class="squares"><span class="sq red"></span></div></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"><div class="squares"><span class="sq red"></span></div></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"><div class="squares"><span class="sq red"></span></div></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"><div class="squares"><span class="sq red"></span></div></div></td>
+								</tr>
+								<tr><th scope="row">M</th>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"><div class="squares"><span class="sq red"></span></div></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"><div class="squares"><span class="sq red"></span></div></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"><div class="squares"><span class="sq red"></span></div></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+								</tr>
+								<tr><th scope="row">N</th>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+								</tr>
+								<tr><th scope="row">O</th>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+								</tr>
+								<tr><th scope="row">P</th>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+									<td><div class="cell-inner"><input class="date-input" placeholder="DD/MM/AAAA"></div></td>
+								</tr>
+								<tr class="total-row"><th scope="row">Total</th>
+									<td><div class="cell-inner">W</div></td>
+									<td><div class="cell-inner">W</div></td>
+									<td><div class="cell-inner">W</div></td>
+									<td><div class="cell-inner">W</div></td>
+									<td><div class="cell-inner">W</div></td>
+									<td><div class="cell-inner">W</div></td>
+									<td><div class="cell-inner">W</div></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</section>
+			</div>
+
+			<!-- 3 — TIMELINE ESCOTISTA -->
+			<div id="timeline" class="panel">
+				<section class="page-card">
+					<h2>Timeline Escotista</h2>
+
+					<ul class="timeline">
+						<ul class="timeline">
+							<li class="timeline-item neutral">
+								<time>01-09-2010</time>
+								<div class="tl-content">
+									<strong>1ª inscrição</strong>
+									<div class="small">Grupo ABC</div>
+								</div>
+							</li>
+
+							<li class="timeline-item alcateia">
+								<time>15-03-2012</time>
+								<div class="tl-content">
+									<strong>Compromisso de Honra - Alcateia</strong>
+									<div class="small">Grupo ABC</div>
+								</div>
+							</li>
+
+							<li class="timeline-item escoteiros">
+								<time>20-05-2014</time>
+								<div class="tl-content">
+									<strong>Compromisso de Honra - Tribo de Escoteiros</strong>
+									<div class="small">Grupo ABC</div>
+								</div>
+							</li>
+
+							<li class="timeline-item exploradores">
+								<time>10-09-2016</time>
+								<div class="tl-content">
+									<strong>Compromisso de Honra - Tribo de Exploradores</strong>
+									<div class="small">Grupo ABC</div>
+								</div>
+							</li>
+
+							<li class="timeline-item cla">
+								<time>05-06-2018</time>
+								<div class="tl-content">
+									<strong>Compromisso de Honra - Clã</strong>
+									<div class="small">Grupo ABC</div>
+								</div>
+							</li>
+
+							<li class="timeline-item chefia">
+								<time>12-11-2019</time>
+								<div class="tl-content">
+									<strong>Escoteiro Chefe da Alcateia</strong>
+									<div class="small">Grupo ABC</div>
+								</div>
+							</li>
+						</ul>
+					</ul>
+				</section>
+			</div>
+		</div>
+
+		<script src="../js/main.js"></script>
+	</body>
+</html>

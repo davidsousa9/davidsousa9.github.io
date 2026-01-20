@@ -15,24 +15,209 @@
 			<h1>Inscrições</h1>
 
 			<div class="hmenu" role="tablist" aria-label="Menu da página">
-				<button class="hbtn active" data-panel="a" aria-selected="true">Visão Geral</button>
-				<button class="hbtn" data-panel="b">Estatísticas</button>
-				<button class="hbtn" data-panel="c">Configuração</button>
+				<button class="hbtn active" data-panel="a" aria-selected="true">Inscrever Elemento</button>
 			</div>
 
 			<div id="a" class="panel active">
-				<h2>Visão Geral</h2>
-				<p>Conteúdo principal.</p>
-			</div>
+				<form class="user-form" action="#" method="post" novalidate>
+					<section class="page-card">
+						<h2>Dados Associativos</h2>
 
-			<div id="b" class="panel">
-				<h2>Estatísticas</h2>
-				<p>Dados e gráficos.</p>
-			</div>
+						<div class="form-row">
+							<label>Nome:</label>
+							<input type="text" name="nome_associativo" placeholder="Nome completo">
+						</div>
 
-			<div id="c" class="panel">
-				<h2>Configuração</h2>
-				<p>Opções da página.</p>
+						<div class="grid-3">
+							<div class="form-row">
+								<label>Nº Associativo:</label>
+								<input type="text" name="num_assoc">
+							</div>
+							<div class="form-row">
+								<label>Data Adesão:</label>
+								<input type="date" name="data_adesao">
+							</div>
+							<div></div>
+						</div>
+					</section>
+
+					<section class="page-card">
+						<h2>Informações do Escoteiro</h2>
+
+						<div class="form-row">
+							<label>Nome Completo:</label>
+							<input type="text" name="nome_completo" placeholder="Nome completo">
+						</div>
+
+						<div class="grid-3">
+							<div class="form-row">
+								<label>Data Nasc.:</label>
+								<input type="date" name="data_nasc">
+							</div>
+							<div class="form-row">
+								<label>Nº Telemóvel:</label>
+								<input type="tel" name="telemovel" placeholder="Telemóvel (se tiver)">
+							</div>
+							<div class="form-row">
+								<label>Email:</label>
+								<input type="email" name="email" placeholder="Email (se tiver)">
+							</div>
+						</div>
+
+						<div class="form-row">
+							<label>Género:</label>
+							<div class="inline-controls">
+								<label><input type="radio" name="genero" value="Feminino"> Feminino</label>
+								<label><input type="radio" name="genero" value="Masculino"> Masculino</label>
+								<label><input type="radio" name="genero" value="Outro"> Outro / Prefiro Não Dizer</label>
+							</div>
+						</div>
+
+						<div class="grid-3">
+							<div class="form-row">
+								<label>NIF:</label>
+								<input type="text" name="nif">
+							</div>
+							<div class="form-row">
+								<label>CC / Passaporte:</label>
+								<input type="text" name="doc_id">
+							</div>
+							<div class="form-row">
+								<label>Nº Segurança Social:</label>
+								<input type="text" name="seg_social">
+							</div>
+						</div>
+
+						<div class="grid-3">
+							<div class="form-row">
+								<label>Nº Utente:</label>
+								<input type="text" name="num_utente">
+							</div>
+							<div class="form-row">
+								<label>Sistema:</label>
+								<select name="sistema_saude">
+									<option value="">—</option>
+									<option>SNS</option>
+									<option>SRS</option>
+									<option>ADSE</option>
+									<option>Particular</option>
+									<option>ADM</option>
+								</select>
+							</div>
+							<div class="form-row">
+								<label>Tipo Sanguíneo:</label>
+								<select name="tipo_sang">
+									<option value="">—</option>
+									<option>A+</option><option>A-</option><option>B+</option><option>B-</option>
+									<option>AB+</option><option>AB-</option><option>O+</option><option>O-</option>
+									<option>Não Sabe</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="form-row">
+							<label>Morada:</label>
+							<input type="text" name="morada" placeholder="Morada completa">
+						</div>
+
+						<div class="grid-3">
+							<div class="form-row">
+								<label>Código Postal:</label>
+								<input type="text" name="cod_postal" placeholder="____ - ___">
+							</div>
+							<div class="form-row">
+								<label>Naturalidade:</label>
+								<input type="text" name="naturalidade">
+							</div>
+							<div class="form-row">
+								<label>Nacionalidade:</label>
+								<input type="text" name="nacionalidade">
+							</div>
+						</div>
+
+						<div class="form-row">
+							<label>Restrições Alimentares:</label>
+							<textarea name="restricoes_alim" rows="2"></textarea>
+						</div>
+
+						<div class="form-row">
+							<label>Restrições de Saúde:</label>
+							<textarea name="restricoes_saude" rows="2"></textarea>
+						</div>
+
+						<div class="grid-2">
+							<div class="form-row">
+								<label>Habilitações Académicas:</label>
+								<input type="text" name="habilitacoes">
+							</div>
+							<div class="form-row">
+								<label>Estado Civil:</label>
+								<input type="text" name="estado_civil">
+							</div>
+						</div>
+
+						<div class="form-row">
+							<label>Autorização de Imagem:</label>
+							<div class="inline-controls">
+								<label><input type="radio" name="aut_imagem" value="Sim"> Sim</label>
+								<label><input type="radio" name="aut_imagem" value="Nao"> Não</label>
+							</div>
+						</div>
+					</section>
+
+					<section class="page-card">
+						<h2>Encarregados de Educação</h2>
+
+						<h3>Encarregado 1</h3>
+						<div class="form-row">
+							<label>Nome:</label>
+							<input type="text" name="enc1_nome">
+						</div>
+						<div class="grid-2">
+							<div class="form-row">
+								<label>Nº Telemóvel:</label>
+								<input type="tel" name="enc1_tel">
+							</div>
+							<div class="form-row">
+								<label>Email:</label>
+								<input type="email" name="enc1_email">
+							</div>
+						</div>
+
+						<h3>Encarregado 2</h3>
+						<div class="form-row">
+							<label>Nome:</label>
+							<input type="text" name="enc2_nome">
+						</div>
+						<div class="grid-2">
+							<div class="form-row">
+								<label>Nº Telemóvel:</label>
+								<input type="tel" name="enc2_tel">
+							</div>
+							<div class="form-row">
+								<label>Email:</label>
+								<input type="email" name="enc2_email">
+							</div>
+						</div>
+					</section>
+
+					<section class="page-card">
+						<h2>Contacto de Emergência</h2>
+						<div class="form-row">
+							<label>Nome:</label>
+							<input type="text" name="contacto_nome">
+						</div>
+						<div class="form-row">
+							<label>Nº Telemóvel:</label>
+							<input type="tel" name="contacto_tel">
+						</div>
+					</section>
+
+					<div style="display:flex;gap:10px;margin-top:8px">
+						<button type="submit" class="btn primary">Guardar</button>
+						<button type="reset" class="btn secondary">Limpar</button>
+					</div>
+				</form>
 			</div>
 		</div>
 
