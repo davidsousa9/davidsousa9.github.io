@@ -25,14 +25,179 @@
 			</div>
 
 			<div id="a" class="panel active">
-				<h2>Estatística</h2>
+				<section class="page-card" id="stats-region-section">
+					<h2>Estatística</h2>
 
-				<p>Stock SMU</p>
-				<p>Dados Elementos AEP</p>
-				<p>Balanço Financeiro</p>
-				<p>Balanço NACIONAL</p>
-				<p>Balanço REGIÕES</p>
-				<p>Balanço GRUPOS</p>
+					<div class="page-card">
+						<label for="statsRegionSelect" class="small">Selecionar visão:</label>
+						<select id="statsRegionSelect" aria-label="Selecionar estatística regional">
+							<option value="dados_elementos">Dados Elementos</option>
+							<option value="stock_smu">Stock SMU</option>
+							<option value="balanco_financeiro">Balanço Financeiro</option>
+							<option value="balanco_nacional">Balanço - Nacional</option>
+							<option value="balanco_regiao">Balanço - Regiões</option>
+							<option value="balanco_grupos">Balanço - Grupos</option>
+						</select>
+					</div>
+
+					<div id="stats-region-sections">
+						<!-- Dados Elementos -->
+						<section class="stats-region-section active" data-key="dados_elementos">
+							<div class="page-card">
+								<h3>Chefes Regionais — Contactos</h3>
+
+								<table class="summary-table" style="margin-top:12px">
+									<thead><tr><th>Nome</th><th>Cargo</th><th>Telefone</th><th>Email</th></tr></thead>
+									<tbody>
+										<tr><td>António Rocha</td><td>Escoteiro-Chefe Nacional</td><td>912 345 001</td><td>antonio.rocha@exemplo.pt</td></tr>
+										<tr><td>Mariana Silva</td><td>Escoteiro-Chefe Nacional Adjunto</td><td>913 445 112</td><td>mariana.silva@exemplo.pt</td></tr>
+										<tr><td>Rui Oliveira</td><td>Escoteiro-Chefe Nacional Adjunto</td><td>914 556 223</td><td>rui.oliveira@exemplo.pt</td></tr>
+										<tr><td>Helena Costa</td><td>Escoteiro-Chefe Nacional Adjunto</td><td>915 667 334</td><td>helena.costa@exemplo.pt</td></tr>
+										<tr><td>Pedro Santos</td><td>Escoteiro-Chefe Nacional Adjunto</td><td>916 778 445</td><td>pedro.santos@exemplo.pt</td></tr>
+										<tr><td>Inês Marques</td><td>Escoteiro Adjunto da Chefia Nacional</td><td>917 889 556</td><td>ines.marques@exemplo.pt</td></tr>
+										<tr><td>Luís Faria</td><td>Escoteiro Adjunto da Chefia Nacional</td><td>918 990 667</td><td>luis.faria@exemplo.pt</td></tr>
+										<tr><td>Carolina Gomes</td><td>Escoteiro Adjunto da Chefia Nacional</td><td>919 101 778</td><td>carolina.gomes@exemplo.pt</td></tr>
+									</tbody>
+								</table>
+							</div>
+						</section>
+
+						<!-- STOCK -->
+						<section class="stats-region-section" data-key="stock_smu">
+							<div class="table-controls" style="display:flex;gap:12px;align-items:center;margin-bottom:12px">
+								<label style="min-width:220px">
+									<span class="small">Categoria</span><br>
+									<select id="stockCategory">
+										<option value="all">Todas</option>
+										<option value="Uniformes">Uniformes</option>
+										<option value="Distintivos">Distintivos</option>
+										<option value="Campismo">Campismo</option>
+										<option value="Cozinha">Cozinha</option>
+										<option value="Orientação">Orientação</option>
+										<option value="Iluminação">Iluminação</option>
+										<option value="Escalada">Escalada</option>
+										<option value="Publicações">Publicações</option>
+										<option value="Promocional">Material Promocional</option>
+									</select>
+								</label>
+
+								<label style="flex:1">
+									<span class="small">Pesquisar (nome / preço)</span><br>
+									<input id="stockSearch" type="search" placeholder="Pesquisar..." style="width:100%;padding:8px;border-radius:6px;border:1px solid #e6e9ef">
+								</label>
+
+								<button id="stockReset" class="btn secondary" style="height:38px">Reset</button>
+							</div>
+
+							<div class="table-wrap">
+								<table id="stockTable" class="progress-table" role="table" aria-label="Stock SMU">
+									<thead>
+										<tr>
+											<th scope="col">Categoria</th>
+											<th scope="col" data-key="name" class="sortable">Nome ▾</th>
+											<th scope="col" data-key="price" class="sortable">Preço unitário ▾</th>
+											<th scope="col" data-key="qty" class="sortable">Quantidade ▾</th>
+										</tr>
+									</thead>
+									<tbody>
+										<!-- preenchido por JS -->
+									</tbody>
+								</table>
+							</div>
+						</section>
+
+						<!-- Balanço Financeiro -->
+						<section class="stats-region-section" data-key="balanco_financeiro">
+							<div class="page-card">
+								<h3>Balanço Financeiro</h3>
+
+								<div class="grid-3" style="margin-top:12px">
+									<div class="page-card small"><strong>Receitas</strong><div class="small">€ +22.00,00</div></div>
+									<div class="page-card small"><strong>Despesas</strong><div class="small">€ -12.000,00</div></div>
+									<div class="page-card small"><strong>Saldo</strong><div class="small">€ +10.000,00</div></div>
+								</div>
+
+								<table class="summary-table" style="margin-top:12px">
+									<thead><tr><th>Rubrica</th><th>Valor (€)</th><th>Notas</th></tr></thead>
+									<tbody>
+										<tr><td>Quotas Regionais</td><td>€ +8.000,00</td><td>Inclui transferências de grupos</td></tr>
+										<tr><td>Subvenções</td><td>€ +5.000,00</td><td>Municipalidades e parceiros</td></tr>
+										<tr><td>Atividades (inscrições)</td><td>€ +6.000,00</td><td>Acampamentos e formações</td></tr>
+										<tr><td>Doações</td><td>€ +3.000,00</td><td>Patrocínios locais</td></tr>
+										<tr><td>Despesas Operacionais</td><td>€ -4.000,00</td><td>Logística e material</td></tr>
+										<tr><td>Projetos e Formação</td><td>€ -8.000,00</td><td>Formação de dirigentes e projetos</td></tr>
+									</tbody>
+								</table>
+							</div>
+						</section>
+
+						<!-- BALANÇO NACIONAL -->
+						<section class="stats-region-section" data-key="balanco_nacional">
+							<div class="page-card">
+								<h3>Balanço - Nacional</h3>
+
+								<div class="grid-3" style="margin-top:12px">
+									<div class="page-card small"><strong>Receitas</strong><div class="small">€ 1.250.000,00</div></div>
+									<div class="page-card small"><strong>Despesas</strong><div class="small">€ 985.000,00</div></div>
+									<div class="page-card small"><strong>Saldo</strong><div class="small">€ 265.000,00</div></div>
+								</div>
+
+								<table class="summary-table" style="margin-top:12px">
+									<thead><tr><th>Rubrica</th><th>Valor (€)</th><th>Notas</th></tr></thead>
+									<tbody>
+										<tr><td>Quotas Nacionais</td><td>€ 420.000,00</td><td>Contribuições diretas</td></tr>
+										<tr><td>Projetos &amp; Formação</td><td>€ 300.000,00</td><td>Formação de dirigentes</td></tr>
+										<tr><td>Subvenções</td><td>€ 230.000,00</td><td>Protocolos e apoios</td></tr>
+										<tr><td>Atividades (inscrições)</td><td>€ 150.000,00</td><td>Acampamentos e eventos</td></tr>
+										<tr><td>Doações</td><td>€ 150.000,00</td><td>Patrocínios e donativos</td></tr>
+										<tr><td>Despesas Operacionais</td><td>€ 500.000,00</td><td>Custos administrativos</td></tr>
+									</tbody>
+								</table>
+							</div>
+						</section>
+
+						<!-- Balanço REGIÃO -->
+						<section class="stats-region-section" data-key="balanco_regiao">
+							<div class="page-card">
+								<h3>Balanço - Por Região</h3>
+
+								<table class="summary-table" style="margin-top:12px">
+									<thead><tr><th>Região</th><th>Receitas</th><th>Despesas</th><th>Saldo</th></tr></thead>
+									<tbody>
+										<tr><td>Norte</td><td>€ 60.000,00</td><td>€ 45.000,00</td><td>€ 15.000,00</td></tr>
+										<tr><td>Centro</td><td>€ 50.000,00</td><td>€ 38.000,00</td><td>€ 12.000,00</td></tr>
+										<tr><td>Lisboa e Vale do Tejo</td><td>€ 48.000,00</td><td>€ 40.500,00</td><td>€ 7.500,00</td></tr>
+										<tr><td>Além do Tejo</td><td>€ 20.000,00</td><td>€ 14.000,00</td><td>€ 6.000,00</td></tr>
+										<tr><td>Sul</td><td>€ 18.450,00</td><td>€ 14.800,00</td><td>€ 3.650,00</td></tr>
+										<tr><td>Madeira</td><td>€ 12.000,00</td><td>€ 10.000,00</td><td>€ 2.000,00</td></tr>
+										<tr><td>Açores Oriental</td><td>€ 12.000,00</td><td>€ 9.000,00</td><td>€ 3.000,00</td></tr>
+									</tbody>
+								</table>
+							</div>
+						</section>
+
+						<!-- Balanço GRUPOS -->
+						<section class="stats-region-section" data-key="balanco_grupos">
+							<div class="page-card">
+								<h3>Balanço - Por Grupo</h3>
+								<p class="small">Resumo síntese por grupo.</p>
+
+								<table class="summary-table" style="margin-top:12px">
+									<thead><tr><th>Grupo</th><th>Receitas</th><th>Despesas</th><th>Saldo</th></tr></thead>
+									<tbody>
+										<tr><td>Grupo ABC</td><td>€ 12.480,00</td><td>€ 8.740,00</td><td>€ 3.740,00</td></tr>
+										<tr><td>Grupo DEF</td><td>€ 9.200,00</td><td>€ 7.100,00</td><td>€ 2.100,00</td></tr>
+										<tr><td>Grupo GHI</td><td>€ 7.800,00</td><td>€ 6.400,00</td><td>€ 1.400,00</td></tr>
+										<tr><td>Grupo JKL</td><td>€ 15.200,00</td><td>€ 12.000,00</td><td>€ 3.200,00</td></tr>
+										<tr><td>Grupo MNO</td><td>€ 5.000,00</td><td>€ 6.200,00</td><td>€ -1.200,00</td></tr>
+									</tbody>
+								</table>
+
+								<p class="small" style="margin-top:8px">Exportar: <a href="#" class="small">CSV</a> • <a href="#" class="small">PDF</a></p>
+							</div>
+						</section>
+					</div>
+				</section>
 			</div>
 
 			<div id="b" class="panel">
@@ -144,7 +309,127 @@
 			</div>
 
 			<div id="c" class="panel">
-				<h2>Gestão SMU</h2>
+				<section class="page-card" id="gestao-smu-section">
+					<h2>Gestão SMU</h2>
+
+					<div class="page-card" style="margin-bottom:8px">
+						<label for="gestaoSelect" class="small">Selecionar área:</label>
+						<select id="gestaoSelect" aria-label="Selecionar área de Gestão SMU">
+							<option value="stock_smu">Stock SMU</option>
+							<option value="encomendas">Encomendas</option>
+							<option value="fornecedores">Fornecedores</option>
+							<option value="movimentos">Movimentos</option>
+							<option value="relatorios">Relatórios</option>
+						</select>
+					</div>
+
+					<!-- SECTIONS -->
+					<div id="gestao-sections">
+						<!-- STOCK (id's scoped para 'gestao_') -->
+						<section class="gestao-section active" data-key="stock_smu">
+							<div class="table-controls" style="display:flex;gap:12px;align-items:center;margin-bottom:12px">
+								<label style="min-width:220px">
+									<span class="small">Categoria</span><br>
+									<select id="gestao_stockCategory">
+										<option value="all">Todas</option>
+										<option value="Uniformes">Uniformes</option>
+										<option value="Distintivos">Distintivos</option>
+										<option value="Campismo">Campismo</option>
+										<option value="Cozinha">Cozinha</option>
+										<option value="Orientação">Orientação</option>
+										<option value="Iluminação">Iluminação</option>
+										<option value="Escalada">Escalada</option>
+										<option value="Publicações">Publicações</option>
+										<option value="Promocional">Material Promocional</option>
+									</select>
+								</label>
+
+								<label style="flex:1">
+									<span class="small">Pesquisar (nome / preço)</span><br>
+									<input id="gestao_stockSearch" type="search" placeholder="Pesquisar..." style="width:100%;padding:8px;border-radius:6px;border:1px solid #e6e9ef">
+								</label>
+
+								<button id="gestao_stockReset" class="btn secondary" style="height:38px">Reset</button>
+							</div>
+
+							<div class="table-wrap">
+								<table id="gestao_stockTable" class="progress-table" role="table" aria-label="Stock SMU (Gestão)">
+									<thead>
+										<tr>
+											<th scope="col">Categoria</th>
+											<th scope="col" data-key="name" class="sortable">Nome ▾</th>
+											<th scope="col" data-key="price" class="sortable">Preço unitário ▾</th>
+											<th scope="col" data-key="qty" class="sortable">Quantidade ▾</th>
+										</tr>
+									</thead>
+									<tbody>
+										<!-- preenchido por JS -->
+									</tbody>
+								</table>
+							</div>
+						</section>
+
+						<!-- Encomendas -->
+						<section class="gestao-section" data-key="encomendas">
+							<div class="page-card">
+								<h3>Encomendas</h3>
+								<p class="small">Registo de encomendas para o stock (exemplo fictício).</p>
+
+								<table class="summary-table" style="margin-top:12px">
+									<thead><tr><th>Data</th><th>Fornecedor</th><th>Produto</th><th>Qtd</th><th>Estado</th></tr></thead>
+									<tbody>
+										<tr><td>2025-01-10</td><td>Fornecedor A</td><td>Tenda 4P</td><td>5</td><td>Recebida</td></tr>
+										<tr><td>2025-01-20</td><td>Fornecedor B</td><td>Camisa Escoteiros</td><td>30</td><td>Pendente</td></tr>
+									</tbody>
+								</table>
+							</div>
+						</section>
+
+						<!-- Fornecedores -->
+						<section class="gestao-section" data-key="fornecedores">
+							<div class="page-card">
+								<h3>Fornecedores</h3>
+								<p class="small">Contactos e condições (exemplo fictício).</p>
+
+								<table class="summary-table" style="margin-top:12px">
+									<thead><tr><th>Fornecedor</th><th>Contacto</th><th>Termos</th></tr></thead>
+									<tbody>
+										<tr><td>Fornecedor A</td><td>fornecedora@exemplo.pt</td><td>Pagamento 30 dias</td></tr>
+										<tr><td>Fornecedor B</td><td>fornecedorb@exemplo.pt</td><td>Despacho 48h</td></tr>
+									</tbody>
+								</table>
+							</div>
+						</section>
+
+						<!-- Movimentos -->
+						<section class="gestao-section" data-key="movimentos">
+							<div class="page-card">
+								<h3>Movimentos de Stock</h3>
+								<p class="small">Entradas / Saídas recentes (fictício).</p>
+
+								<table class="summary-table" style="margin-top:12px">
+									<thead><tr><th>Data</th><th>Tipo</th><th>Produto</th><th>Qtd</th><th>Responsável</th></tr></thead>
+									<tbody>
+										<tr><td>2025-02-01</td><td>Saída</td><td>Caneca Escoteiros</td><td>10</td><td>Maria</td></tr>
+										<tr><td>2025-02-03</td><td>Entrada</td><td>Distintivo Alcateia</td><td>200</td><td>João</td></tr>
+									</tbody>
+								</table>
+							</div>
+						</section>
+
+						<!-- Relatórios -->
+						<section class="gestao-section" data-key="relatorios">
+							<div class="page-card">
+								<h3>Relatórios SMU</h3>
+								<p class="small">Relatórios e exportações (exemplo fictício).</p>
+								<ul class="clean-list" style="margin-top:12px">
+									<li><a href="#">Exportar inventário (CSV)</a></li>
+									<li><a href="#">Relatório de movimentos (PDF)</a></li>
+								</ul>
+							</div>
+						</section>
+					</div>
+				</section>
 			</div>
 
 			<div id="d" class="panel">
@@ -318,7 +603,51 @@
 			</div>
 
 			<div id="e" class="panel">
-				<h2>Censos</h2>
+				<section class="page-card" id="censos-section">
+					<h2>Censos</h2>
+
+					<div class="table-controls" style="display:flex;gap:12px;align-items:center;margin-bottom:12px">
+						<label style="min-width:220px">
+							<span class="small">Filtrar Região</span><br>
+							<select id="censosRegion">
+								<option value="all">Todas</option>
+								<option>Norte</option>
+								<option>Centro</option>
+								<option>Lisboa e Vale do Tejo</option>
+								<option>Além do Tejo</option>
+								<option>Sul</option>
+								<option>Madeira</option>
+								<option>Açores Oriental</option>
+								<option>Outros</option>
+							</select>
+						</label>
+
+						<label style="flex:1">
+							<span class="small">Pesquisar (Grupo / Região)</span><br>
+							<input id="censosSearch" type="search" placeholder="Pesquisar..." style="width:100%;padding:8px;border-radius:6px;border:1px solid #e6e9ef">
+						</label>
+
+						<button id="censosReset" class="btn secondary" style="height:38px">Reset</button>
+					</div>
+
+					<div class="table-wrap">
+						<table id="censosTable" class="summary-table" role="table" aria-label="Censos nacionais">
+							<thead>
+								<tr>
+									<th data-key="name" class="sortable">Grupo ▾</th>
+									<th data-key="region" class="sortable">Região ▾</th>
+									<th data-key="paidPercent" class="sortable">Censos Pagos (%) ▾</th>
+									<th data-key="elements" class="sortable"># Elementos ▾</th>
+									<th data-key="due" class="sortable"># Por Pagar ▾</th>
+									<th data-key="total" class="sortable">Valor Total ▾</th>
+								</tr>
+							</thead>
+							<tbody>
+								<!-- preenchido por JS -->
+							</tbody>
+						</table>
+					</div>
+				</section>
 			</div>
 
 			<div id="f" class="panel">

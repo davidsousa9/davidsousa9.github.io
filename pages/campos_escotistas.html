@@ -11,28 +11,380 @@
 			class="sidebar-frame"
 		></iframe>
 
-		<div class="content">
+		<div class="content" id="campos-escotistas-root">
 			<h1>Campos Escotistas</h1>
 
 			<div class="hmenu" role="tablist" aria-label="Menu da página">
-				<button class="hbtn active" data-panel="a" aria-selected="true">Visão Geral</button>
-				<button class="hbtn" data-panel="b">Estatísticas</button>
-				<button class="hbtn" data-panel="c">Configuração</button>
+				<button class="hbtn active" data-panel="a" aria-selected="true">Reservar</button>
+				<button class="hbtn" data-panel="b">Parque Nacional</button>
+				<button class="hbtn" data-panel="c">Campos</button>
+				<button class="hbtn" data-panel="d">Albergues</button>
+				<button class="hbtn" data-panel="e">Inscrever</button>
 			</div>
 
+			<!-- PANEL A - RESERVAR -->
 			<div id="a" class="panel active">
-				<h2>Visão Geral</h2>
-				<p>Conteúdo principal.</p>
+				<h2>Reservar</h2>
+
+				<form id="form-reservar" class="page-card">
+					<!-- Campo / Centro -->
+					<div class="form-row">
+						<label>Campo / Centro</label>
+						<select name="centro" required>
+							<option value="">— Selecionar —</option>
+							<option value="PNEC">PNEC — Parque Nacional</option>
+							<option value="CAEF">CAEF — Fajão</option>
+							<option value="CAEP">CAEP — Paiço</option>
+							<option value="CAEPC">CAEPC — Praia do Poço</option>
+							<option value="CAEG">CAEG — Gondomar</option>
+							<option value="PAEB">PAEB — Benavente</option>
+						</select>
+					</div>
+
+					<h3>Dados Pessoais</h3>
+					<div class="grid-2">
+						<div class="form-row">
+							<label>Nome</label>
+							<input type="text" name="nome" required>
+						</div>
+						<div class="form-row">
+							<label>Cargo</label>
+							<input type="text" name="cargo">
+						</div>
+					</div>
+
+					<div class="grid-2">
+						<div class="form-row">
+							<label>Email</label>
+							<input type="email" name="email">
+						</div>
+						<div class="form-row">
+							<label>Telefone</label>
+							<input type="tel" name="telefone">
+						</div>
+					</div>
+
+					<h3>Dados do Grupo</h3>
+					<div class="grid-3">
+						<div class="form-row">
+							<label>Associação</label>
+							<select name="associacao">
+								<option>AEP</option><option>AGP</option><option>CNE</option><option>Outro</option>
+							</select>
+						</div>
+						<div class="form-row">
+							<label>Grupo</label>
+							<input type="text" name="grupo">
+						</div>
+						<div class="form-row">
+							<label>Localidade</label>
+							<input type="text" name="localidade">
+						</div>
+					</div>
+
+					<h3>Datas e Serviço</h3>
+					<div class="grid-3">
+						<div class="form-row">
+							<label>Check-in</label>
+							<input type="date" name="checkin">
+						</div>
+						<div class="form-row">
+							<label>Check-out</label>
+							<input type="date" name="checkout">
+						</div>
+						<div class="form-row">
+							<label>Serviço</label>
+							<select name="servico">
+								<option>Pernoita</option>
+								<option>Catering</option>
+								<option>Formação</option>
+								<option>Outro</option>
+							</select>
+						</div>
+					</div>
+
+					<h3>Participantes</h3>
+					<div class="grid-4">
+						<div class="form-row"><label>Lobitos</label><input type="number" name="p_lobitos" min="0"></div>
+						<div class="form-row"><label>Escoteiros</label><input type="number" name="p_escoteiros" min="0"></div>
+						<div class="form-row"><label>Exploradores</label><input type="number" name="p_exploradores" min="0"></div>
+						<div class="form-row"><label>Caminheiros</label><input type="number" name="p_caminheiros" min="0"></div>
+					</div>
+
+					<div class="grid-2">
+						<div class="form-row"><label>Adultos</label><input type="number" name="p_adultos" min="0"></div>
+						<div class="form-row"><label>Total (calculado)</label><input id="p_total" type="number" name="p_total" readonly></div>
+					</div>
+
+					<h3>Equipamentos Solicitados</h3>
+					<p class="small">Indica a quantidade para cada item (opcional).</p>
+					<div class="grid-3">
+						<div class="form-row"><label>Tendas 4P</label><input type="number" name="eq_tendas" min="0"></div>
+						<div class="form-row"><label>Fogareiros</label><input type="number" name="eq_fogareiros" min="0"></div>
+						<div class="form-row"><label>Lanternas</label><input type="number" name="eq_lanternas" min="0"></div>
+					</div>
+
+					<div class="form-row">
+						<label>Notas</label>
+						<textarea name="notas" rows="3"></textarea>
+					</div>
+
+					<div class="form-row" style="display:flex;gap:12px;align-items:center">
+						<label><input type="checkbox" name="terms" required> Li e aceito os Termos e Condições</label>
+					</div>
+
+					<div style="display:flex;gap:10px;margin-top:10px">
+						<button type="submit" class="btn primary">Enviar Reserva</button>
+						<button type="reset" class="btn secondary">Limpar</button>
+					</div>
+				</form>
 			</div>
 
+			<!-- PANEL B - PARQUE NACIONAL (menu only) -->
 			<div id="b" class="panel">
-				<h2>Estatísticas</h2>
-				<p>Dados e gráficos.</p>
+				<h2>Parque Nacional</h2>
+
+				<div class="page-card">
+					<label style="max-width:320px">
+						<span class="small">Selecionar sub-menu</span><br>
+						<select id="parqueSelect">
+							<option value="pnec_1" selected>Informações Gerais</option>
+							<option value="pnec_2">Atividades</option>
+							<option value="pnec_3">Como chegar</option>
+							<option value="pnec_4">Como ajudar</option>
+							<option value="pnec_5">Instalações</option>
+							<option value="pnec_6">Condições e Termos Gerais</option>
+							<option value="pnec_7">Informações de Reserva</option>
+						</select>
+					</label>
+				</div>
+
+				<section class="parque-section active" data-key="pnec_1">https://centros.escoteiros.pt/pnec</section>
+				<section class="parque-section" data-key="pnec_2">https://centros.escoteiros.pt/pnec-atividades</section>
+				<section class="parque-section" data-key="pnec_3">https://centros.escoteiros.pt/pnec-comochegar</section>
+				<section class="parque-section" data-key="pnec_4">https://centros.escoteiros.pt/pnec-comoajudar</section>
+				<section class="parque-section" data-key="pnec_5">https://centros.escoteiros.pt/pnec-instalacoes</section>
+				<section class="parque-section" data-key="pnec_6">https://centros.escoteiros.pt/pnec-normascondutas</section>
+				<section class="parque-section" data-key="pnec_7">https://centros.escoteiros.pt/pnec-precario</section>
 			</div>
 
+			<!-- PANEL C - CAMPOS (menu only) -->
 			<div id="c" class="panel">
-				<h2>Configuração</h2>
-				<p>Opções da página.</p>
+				<h2>Campos</h2>
+
+				<div class="page-card">
+					<label style="max-width:320px">
+						<span class="small">Selecionar sub-menu</span><br>
+						<select id="camposSelect">
+							<option value="campos_1" selected>CAECC</option>
+							<option value="campos_2">CAEC</option>
+							<option value="campos_3">PAEB</option>
+							<option value="campos_4">CAEF</option>
+							<option value="campos_5">CAEP</option>
+							<option value="campos_6">CAEPC</option>
+							<option value="campos_7">CAEG</option>
+						</select>
+					</label>
+				</div>
+
+				<section class="campos-section active" data-key="campos_1">https://centros.escoteiros.pt/CAECC</section>
+				<section class="campos-section" data-key="campos_2">https://centros.escoteiros.pt/CAEC</section>
+				<section class="campos-section" data-key="campos_3">https://centros.escoteiros.pt/PAEB</section>
+				<section class="campos-section" data-key="campos_4">https://centros.escoteiros.pt/caef</section>
+				<section class="campos-section" data-key="campos_5">https://centros.escoteiros.pt/caep</section>
+				<section class="campos-section" data-key="campos_6">https://centros.escoteiros.pt/caepc</section>
+				<section class="campos-section" data-key="campos_7">https://centros.escoteiros.pt/caeg</section>
+			</div>
+
+			<!-- PANEL D - ALBERGUES (contacts list) -->
+			<div id="d" class="panel">
+				<h2>Albergues</h2>
+
+				<div class="page-card">
+					<div class="albergues-grid">
+						<!-- Toca Escotista de Azeitão -->
+						<article class="albergue-card">
+							<h3>Toca Escotista de Azeitão</h3>
+							<p class="meta"><strong>Localidade:</strong> Azeitão</p>
+							<p><strong>Morada:</strong> <a href="https://maps.app.goo.gl/..." target="_blank" rel="noopener">Rua do Fisco, 131 — 2925-384 Azeitão</a></p>
+							<p><strong>Email:</strong> <a href="mailto:grupo231@escoteiros.pt">grupo231@escoteiros.pt</a></p>
+							<p><strong>Capacidade:</strong> Acantonamento: 60 • Acampamento: 20</p>
+							<ul class="facilities">
+								<li><strong>Água:</strong> disponível</li>
+								<li><strong>Eletricidade:</strong> disponível</li>
+								<li><strong>Chuveiros:</strong> —</li>
+								<li><strong>Sanitários:</strong> —</li>
+								<li><strong>Zona de fogo:</strong> sim</li>
+							</ul>
+							<p><strong>Atividades:</strong> sede no sopé da Serra da Arrábida; trilhos; praias e atividades náuticas; visitas culturais (Caves da Bacalhoa, etc.).</p>
+							<p><strong>Transportes:</strong> comboio/autocarro até Setúbal/Coina e depois ~1 km a pé (descrição detalhada na fonte).</p>
+						</article>
+
+						<!-- Albergue Escotista de Faro -->
+						<article class="albergue-card">
+							<h3>Albergue Escotista de Faro</h3>
+							<p class="meta"><strong>Localidade:</strong> Faro</p>
+							<p><strong>Morada:</strong> <a href="https://maps.app.goo.gl/..." target="_blank" rel="noopener">Estrada da Sra. da Saúde — 8005-148 Faro</a></p>
+							<p><strong>Email:</strong> <a href="mailto:regiao.sul@escoteiros.pt">regiao.sul@escoteiros.pt</a></p>
+							<p><strong>Capacidade:</strong> Acantonamento: 50 • Acampamento: 20</p>
+							<ul class="facilities">
+								<li><strong>Água:</strong> —</li>
+								<li><strong>Eletricidade:</strong> —</li>
+								<li><strong>Chuveiros:</strong> —</li>
+								<li><strong>Sanitários:</strong> —</li>
+								<li><strong>Zona de fogo:</strong> —</li>
+							</ul>
+							<p><strong>Atividades:</strong> caminhadas e trilhos na Ria Formosa e Serra do Caldeirão; passeios de barco; atividades aquáticas; visitas culturais.</p>
+							<p><strong>Transportes:</strong> instruções detalhadas (a partir do aeroporto, estação e autoestrada) na fonte.</p>
+						</article>
+
+						<!-- Sede do 2º Grupo (Ajuda, Lisboa) -->
+						<article class="albergue-card">
+							<h3>Sede do 2º Grupo</h3>
+							<p class="meta"><strong>Localidade:</strong> Ajuda, Lisboa</p>
+							<p><strong>Morada:</strong> <a href="https://maps.app.goo.gl/..." target="_blank" rel="noopener">Calçada da Ajuda, nº228 — 1300-012 Lisboa</a></p>
+							<p><strong>Email:</strong> <a href="mailto:grupo2@escoteiros.pt">grupo2@escoteiros.pt</a></p>
+							<p><strong>Capacidade:</strong> Acantonamento: 0 • Acampamento: 40</p>
+							<ul class="facilities">
+								<li><strong>Água:</strong> —</li>
+								<li><strong>Eletricidade:</strong> —</li>
+								<li><strong>Chuveiros:</strong> —</li>
+								<li><strong>Sanitários:</strong> —</li>
+								<li><strong>Zona de fogo:</strong> —</li>
+							</ul>
+							<p><strong>Atividades:</strong> proximidade ao Jardim Botânico da Ajuda, Palácio Nacional da Ajuda e zona de Belém.</p>
+						</article>
+
+						<!-- Estação Planície (Évora) -->
+						<article class="albergue-card">
+							<h3>Estação Planície</h3>
+							<p class="meta"><strong>Localidade:</strong> Évora</p>
+							<p><strong>Morada:</strong> <a href="https://maps.app.goo.gl/..." target="_blank" rel="noopener">Rua da Estação, n. 25 — 7005-223 Évora</a></p>
+							<p><strong>Email:</strong> <a href="mailto:grupo265@escoteiros.pt">grupo265@escoteiros.pt</a></p>
+							<p><strong>Capacidade:</strong> Acantonamento: 50 • Acampamento: 0</p>
+							<ul class="facilities">
+								<li><strong>Água:</strong> —</li>
+								<li><strong>Eletricidade:</strong> —</li>
+								<li><strong>Chuveiros:</strong> —</li>
+								<li><strong>Sanitários:</strong> —</li>
+								<li><strong>Zona de fogo:</strong> —</li>
+							</ul>
+							<p><strong>Atividades:</strong> visitas culturais à cidade património mundial; caminhadas por trilhos; atividades na mata das piscinas municipais.</p>
+						</article>
+
+						<!-- Sede do Grupo 93 (Sintra) -->
+						<article class="albergue-card">
+							<h3>Sede do Grupo 93</h3>
+							<p class="meta"><strong>Localidade:</strong> Sintra</p>
+							<p><strong>Morada:</strong> <a href="https://maps.app.goo.gl/..." target="_blank" rel="noopener">R. João de Deus 2 — 2710-579 Sintra</a></p>
+							<p><strong>Email:</strong> <a href="mailto:alojamentogrupo93@gmail.com">alojamentogrupo93@gmail.com</a></p>
+							<p><strong>Capacidade:</strong> Acantonamento: 70 • Acampamento: 70</p>
+							<ul class="facilities">
+								<li><strong>Água:</strong> —</li>
+								<li><strong>Eletricidade:</strong> —</li>
+								<li><strong>Chuveiros:</strong> —</li>
+								<li><strong>Sanitários:</strong> —</li>
+								<li><strong>Zona de fogo:</strong> —</li>
+							</ul>
+							<p><strong>Atividades:</strong> acesso à Serra de Sintra, visitas a palácios e ao Castelo dos Mouros; atividades de campo e percursos.</p>
+						</article>
+
+						<!-- Sede do Grupo 53 (Braga) -->
+						<article class="albergue-card">
+							<h3>Sede do Grupo 53</h3>
+							<p class="meta"><strong>Localidade:</strong> Real-Braga</p>
+							<p><strong>Morada:</strong> <a href="https://maps.app.goo.gl/..." target="_blank" rel="noopener">Rua Nossa Senhora das Graças, nº 51 — 4700-281</a></p>
+							<p><strong>Email:</strong> <a href="mailto:grupo53@escoteiros.pt">grupo53@escoteiros.pt</a></p>
+							<p><strong>Capacidade:</strong> Acantonamento: 60 • Acampamento: 20</p>
+							<ul class="facilities">
+								<li><strong>Água:</strong> —</li>
+								<li><strong>Eletricidade:</strong> —</li>
+								<li><strong>Chuveiros:</strong> —</li>
+								<li><strong>Sanitários:</strong> —</li>
+								<li><strong>Zona de fogo:</strong> —</li>
+							</ul>
+							<p><strong>Atividades:</strong> diversas atividades ao ar livre; proximidade a transporte e serviços locais.</p>
+						</article>
+
+						<!-- Sede do Grupo 262 (Guizanderia-Carregado) -->
+						<article class="albergue-card">
+							<h3>Sede do Grupo 262</h3>
+							<p class="meta"><strong>Localidade:</strong> Guizanderia-Carregado</p>
+							<p><strong>Morada:</strong> <a href="https://maps.app.goo.gl/..." target="_blank" rel="noopener">Rua da Escola Primária — Guizanderia — Carregado</a></p>
+							<p><strong>Email:</strong> <a href="mailto:grupo262@escoteiros.pt">grupo262@escoteiros.pt</a></p>
+							<p><strong>Capacidade:</strong> Acantonamento: 20 • Acampamento: 100</p>
+							<ul class="facilities">
+								<li><strong>Água:</strong> —</li>
+								<li><strong>Eletricidade:</strong> —</li>
+								<li><strong>Chuveiros:</strong> —</li>
+								<li><strong>Sanitários:</strong> —</li>
+								<li><strong>Zona de fogo:</strong> —</li>
+							</ul>
+							<p><strong>Atividades:</strong> jogos no albergue; jogos de cidade; proximidade a piscinas municipais e trilhos.</p>
+						</article>
+
+						<!-- Sede do Grupo 279 (S. Pedro da Cova) -->
+						<article class="albergue-card">
+							<h3>Sede do Grupo 279</h3>
+							<p class="meta"><strong>Localidade:</strong> S. Pedro da Cova</p>
+							<p><strong>Morada:</strong> <a href="https://maps.app.goo.gl/..." target="_blank" rel="noopener">Rua do Maninho, 27 — 4510-317 S. Pedro da Cova</a></p>
+							<p><strong>Email:</strong> <a href="mailto:grupo279@escoteiros.pt">grupo279@escoteiros.pt</a></p>
+							<p><strong>Capacidade:</strong> Acantonamento: 100 • Acampamento: 7</p>
+							<ul class="facilities">
+								<li><strong>Água:</strong> —</li>
+								<li><strong>Eletricidade:</strong> —</li>
+								<li><strong>Chuveiros:</strong> —</li>
+								<li><strong>Sanitários:</strong> —</li>
+								<li><strong>Zona de fogo:</strong> —</li>
+							</ul>
+							<p><strong>Atividades:</strong> raids nas serras do Porto; escalada; rapel; atividades aquáticas e visitas ao património mineiro.</p>
+						</article>
+
+					</div>
+				</div>
+			</div>
+
+			<!-- PANEL E - INSCRIVER (form similar to reservar) -->
+			<div id="e" class="panel">
+				<h2>Inscrever</h2>
+					<div class="grid-2">
+						<div class="form-row"><label>Nome do Responsável</label><input type="text" name="nome_resp" required></div>
+						<div class="form-row"><label>Email</label><input type="email" name="email_resp"></div>
+					</div>
+
+					<div class="grid-3">
+						<div class="form-row"><label>Grupo</label><input type="text" name="grupo"></div>
+						<div class="form-row"><label>Data Início</label><input type="date" name="data_inicio"></div>
+						<div class="form-row"><label>Data Fim</label><input type="date" name="data_fim"></div>
+					</div>
+
+					<div class="form-row">
+						<label>Tipo de Inscrição</label>
+						<select name="tipo">
+							<option>Acampamento</option><option>Formação</option><option>Dia de Atividades</option>
+						</select>
+					</div>
+
+					<div class="form-row">
+						<label>Nº Participantes</label>
+						<input type="number" name="n_part" min="0">
+					</div>
+
+					<div class="form-row">
+						<label>Contacto Emergência</label>
+						<input type="tel" name="contacto_emerg">
+					</div>
+
+					<div class="form-row">
+						<label>Observações</label>
+						<textarea name="observacoes" rows="3"></textarea>
+					</div>
+
+					<div style="display:flex;gap:10px;margin-top:10px">
+						<button type="submit" class="btn primary">Submeter Inscrição</button>
+						<button type="reset" class="btn secondary">Limpar</button>
+					</div>
+				</form>
 			</div>
 		</div>
 

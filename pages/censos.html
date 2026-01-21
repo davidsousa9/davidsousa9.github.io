@@ -11,28 +11,100 @@
 			class="sidebar-frame"
 		></iframe>
 
-		<div class="content">
+		<div class="content" id="group-censos-root">
 			<h1>Censos</h1>
 
 			<div class="hmenu" role="tablist" aria-label="Menu da página">
-				<button class="hbtn active" data-panel="a" aria-selected="true">Visão Geral</button>
-				<button class="hbtn" data-panel="b">Estatísticas</button>
-				<button class="hbtn" data-panel="c">Configuração</button>
+				<button class="hbtn active" data-panel="a" aria-selected="true">Censos 2025 / 2026</button>
+				<button class="hbtn" data-panel="b">Elementos Inscritos no Ano Passado</button>
+				<button class="hbtn" data-panel="c">Elementos Inativos</button>
+			</div>
+
+			<!-- global controls (filter by divisão applies to active panel) -->
+			<div class="page-card" style="margin-top:12px">
+				<div style="display:flex;gap:12px;align-items:center">
+					<label style="min-width:220px">
+						<span class="small">Filtrar Divisão</span><br>
+						<select id="gc_divisionFilter">
+							<option value="all">Todas</option>
+							<option value="Alcateia">Alcateia</option>
+							<option value="Tribo de Escoteiros">Tribo de Escoteiros</option>
+							<option value="Tribo de Exploradores">Tribo de Exploradores</option>
+							<option value="Clã">Clã</option>
+							<option value="Chefia">Chefia</option>
+						</select>
+					</label>
+
+					<label style="flex:1">
+						<span class="small">Pesquisar (Nome / Nº Associativo)</span><br>
+						<input id="gc_search" type="search" placeholder="Pesquisar..." style="width:100%;padding:8px;border-radius:6px;border:1px solid #e6e9ef">
+					</label>
+
+					<button id="gc_reset" class="btn secondary" style="height:38px">Reset</button>
+				</div>
 			</div>
 
 			<div id="a" class="panel active">
-				<h2>Visão Geral</h2>
-				<p>Conteúdo principal.</p>
+				<h2>Censos 2025 / 2026</h2>
+
+				<div class="page-card" style="margin-top:8px">
+					<div class="table-wrap">
+						<table id="gc_table_a" class="summary-table" role="table" aria-label="Censos 2025 2026">
+							<thead>
+								<tr>
+									<th>Divisão</th>
+									<th data-key="name" class="sortable">Nome ▾</th>
+									<th data-key="num" class="sortable">Número Associativo ▾</th>
+									<th data-key="paid" class="sortable">Pago ▾</th>
+									<th data-key="regc" class="sortable">Registo Criminal ▾</th>
+								</tr>
+							</thead>
+							<tbody></tbody>
+						</table>
+					</div>
+				</div>
 			</div>
 
 			<div id="b" class="panel">
-				<h2>Estatísticas</h2>
-				<p>Dados e gráficos.</p>
+				<h2>Elementos Inscritos no Ano Passado</h2>
+
+				<div class="page-card" style="margin-top:8px">
+					<div class="table-wrap">
+						<table id="gc_table_b" class="summary-table" role="table" aria-label="Elementos inscritos ano passado">
+							<thead>
+								<tr>
+									<th>Divisão</th>
+									<th data-key="name" class="sortable">Nome ▾</th>
+									<th data-key="num" class="sortable">Número Associativo ▾</th>
+									<th data-key="paid" class="sortable">Pago ▾</th>
+									<th>Estado Inscrição</th>
+								</tr>
+							</thead>
+							<tbody></tbody>
+						</table>
+					</div>
+				</div>
 			</div>
 
 			<div id="c" class="panel">
-				<h2>Configuração</h2>
-				<p>Opções da página.</p>
+				<h2>Elementos Inativos</h2>
+
+				<div class="page-card" style="margin-top:8px">
+					<div class="table-wrap">
+						<table id="gc_table_c" class="summary-table" role="table" aria-label="Elementos inativos">
+							<thead>
+								<tr>
+									<th>Divisão</th>
+									<th data-key="name" class="sortable">Nome ▾</th>
+									<th data-key="num" class="sortable">Número Associativo ▾</th>
+									<th data-key="paid" class="sortable">Pago ▾</th>
+									<th>Estado Inscrição</th>
+								</tr>
+							</thead>
+							<tbody></tbody>
+						</table>
+					</div>
+				</div>
 			</div>
 		</div>
 

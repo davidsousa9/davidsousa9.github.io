@@ -721,3 +721,196 @@ select:focus{
 .summary-table{width:100%;border-collapse:collapse;table-layout:fixed}
 .summary-table th, .summary-table td{border:1px solid #e6e9ef;padding:8px;text-align:left}
 .summary-table th{background:#f3f4f6;font-weight:600}
+
+/* STATS REGION */
+#stats-region-sections{display:flex;flex-direction:column;gap:12px}
+.stats-region-section{display:none}
+.stats-region-section.active{display:block}
+
+/* small helpers */
+.page-card.small{padding:10px}
+.summary-table{width:100%;border-collapse:collapse;table-layout:fixed}
+.summary-table th, .summary-table td{border:1px solid #e6e9ef;padding:8px;text-align:left}
+.summary-table th{background:#f3f4f6;font-weight:600}
+
+/* STOCK & BALANÇO */
+.stock-section{display:none}
+.stock-section.active{display:block}
+
+/* table tweaks reuse existing table styles */
+#stockTable thead th{background:#f1f5f9;padding:10px;text-align:left;border:1px solid #e6e9ef;position:sticky;top:0;z-index:3}
+#stockTable th,#stockTable td{padding:8px 10px;border:1px solid #e6e9ef;vertical-align:middle;word-break:break-word}
+
+/* numeric formatting alignment */
+#stockTable td[data-type="price"]{text-align:right}
+#stockTable td[data-type="qty"]{text-align:center}
+
+/* compact responsive */
+@media (max-width:900px){
+	#stockTable thead th,#stockTable td{padding:6px}
+}
+
+/* GESTÃO SMU */
+.gestao-section{display:none}
+.gestao-section.active{display:block}
+
+/* reaproveita estilos de tabelas existentes (summary-table / progress-table) */
+
+/* Censos table styles */
+#censosTable{width:100%;border-collapse:collapse;table-layout:fixed;font-size:14px}
+#censosTable th,#censosTable td{padding:8px 10px;border:1px solid #e6e9ef;vertical-align:middle;word-break:break-word}
+#censosTable thead th{background:#f1f5f9;position:sticky;top:0;z-index:3}
+
+/* alternating rows and hover */
+#censosTable tbody tr:nth-child(even) td{background:#f9fafb}
+#censosTable tbody tr:hover td{background:#eef2ff}
+
+/* progress bar for paid percent */
+.paid-wrap{width:140px;display:flex;align-items:center;gap:8px}
+.paid-bar{
+	flex:1;
+	height:10px;
+	background:#f1f5f9;
+	border-radius:6px;
+	overflow:hidden;
+	border:1px solid #e6e9ef;
+}
+.paid-fill{
+	height:100%;
+	background:linear-gradient(90deg,#22c55e,#16a34a);
+	width:0%;
+}
+
+/* numeric alignment */
+td[data-type="num"], td[data-type="currency"]{text-align:right}
+
+/* clickable rows */
+.row-link{cursor:pointer}
+
+/* small responsive tweak */
+@media (max-width:900px){
+	.paid-wrap{width:120px}
+	#censosTable thead th, #censosTable td{padding:6px}
+}
+
+/* Group Censos */
+#group-censos-root .hmenu{display:flex;gap:8px;margin-bottom:12px}
+#group-censos-root .hbtn{padding:8px 12px;border-radius:6px;border:1px solid transparent;background:transparent;cursor:pointer}
+#group-censos-root .hbtn.active{background:#2563eb;color:#fff;border-color:rgba(0,0,0,0.06)}
+
+/* reuse summary-table styles */
+#group-censos-root .summary-table{width:100%;border-collapse:collapse;table-layout:fixed}
+#group-censos-root th,#group-censos-root td{padding:8px 10px;border:1px solid #e6e9ef;vertical-align:middle;word-break:break-word}
+#group-censos-root thead th{background:#f1f5f9;position:sticky;top:0;z-index:3}
+
+/* row colors by division applied to td */
+.row-alcateia td{background:#fff7cc}
+.row-tribo-escoteiros td{background:#f0fdf4}
+.row-tribo-exploradores td{background:#eef2ff}
+.row-cla td{background:#fff1f2}
+.row-chefia td{background:#ffffff}
+
+/* hover */
+#group-censos-root tbody tr:hover td{filter:brightness(0.98)}
+
+/* buttons in table */
+.gc-btn{padding:6px 10px;border-radius:6px;border:1px solid #d1d5db;background:#fff;cursor:pointer}
+.gc-btn.primary{background:#2563eb;color:#fff;border-color:transparent}
+.gc-btn.disabled{opacity:0.6;cursor:default}
+
+/* small helpers */
+.pill-yes{display:inline-block;padding:4px 8px;border-radius:999px;background:#10b981;color:#fff;font-weight:600}
+.pill-no{display:inline-block;padding:4px 8px;border-radius:999px;background:#ef4444;color:#fff;font-weight:600}
+
+/* Campos Escotistas page */
+#campos-escotistas-root .hmenu{display:flex;gap:8px;margin-bottom:12px}
+#campos-escotistas-root .hbtn{padding:8px 12px;border-radius:6px;border:1px solid transparent;background:transparent;cursor:pointer}
+#campos-escotistas-root .hbtn.active{background:#2563eb;color:#fff;border-color:rgba(0,0,0,0.06)}
+#campos-escotistas-root .panel{display:none}
+#campos-escotistas-root .panel.active{display:block}
+
+/* simple form layout helpers */
+.page-card{background:#fff;padding:14px;border:1px solid #e6e9ef;border-radius:8px}
+.form-row{margin-bottom:10px;display:flex;flex-direction:column}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+input[type="text"],input[type="email"],input[type="tel"],input[type="date"],select,textarea,input[type="number"],input[type="search"]{
+	padding:8px;border:1px solid #d1d5db;border-radius:6px;font-size:14px}
+.summary-table{width:100%;border-collapse:collapse;margin-top:8px}
+.summary-table th, .summary-table td{border:1px solid #e6e9ef;padding:8px;text-align:left}
+.clean-list{list-style:none;padding:0;margin:0}
+.vertical-menu li{padding:6px 0}
+.vertical-menu a{text-decoration:none;color:inherit}
+
+/* small button styles used in forms */
+.btn{padding:8px 12px;border-radius:6px;border:1px solid #d1d5db;background:#fff;cursor:pointer}
+.btn.primary{background:#2563eb;color:#fff;border-color:transparent}
+.btn.secondary{background:#f8fafc}
+
+.albergues-grid{
+	display:grid;
+	grid-template-columns:repeat(4,1fr);
+	gap:16px;
+}
+
+@media (max-width:1200px){
+	.albergues-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media (max-width:900px){
+	.albergues-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:520px){
+	.albergues-grid{grid-template-columns:1fr}
+}
+
+.albergue-card{
+	background:#fff;
+	border:1px solid #e6e9ef;
+	border-radius:10px;
+	padding:14px;
+	box-shadow:0 1px 2px rgba(0,0,0,0.04);
+}
+
+.albergue-card h3{
+	margin:0 0 6px 0;
+	font-size:17px;
+}
+
+.albergue-card .meta{
+	font-size:13px;
+	font-weight:600;
+	color:#4b5563;
+	margin-bottom:6px;
+}
+
+.albergue-card p{
+	margin:6px 0;
+	font-size:14px;
+}
+
+.facilities{
+	list-style:none;
+	padding:0;
+	margin:8px 0;
+	display:flex;
+	flex-wrap:wrap;
+	gap:6px;
+}
+
+.facilities li{
+	background:#f1f5f9;
+	border-radius:6px;
+	padding:4px 8px;
+	font-size:12px;
+}
+
+.parque-section,
+.campos-section{
+	display:none;
+}
+
+.parque-section.active,
+.campos-section.active{
+	display:block;
+}
